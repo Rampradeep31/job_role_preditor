@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Edu2Job | Profile</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #f8f9ff;
+    padding: 20px;
+  }
+
+  .card {
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  }
+
+  h2 {
+    color: #4a148c;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+
+  input:focus {
+    border-color: #7b2cbf;
+  }
+
+  .error {
+    color: red;
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .btn {
+    margin-top: 10px;
+    width: 100%;
+    padding: 12px;
+    background: #7b2cbf;
+    border: none;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background-color: #6a22aa;
+  }
+
+  #success {
+    text-align: center;
+    margin-top: 15px;
+    color: green;
+    font-weight: bold;
+  }
+
+  /* ⭐ New button style */
+  .top-btn {
+    width: auto;
+    padding: 10px 15px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+
+  .top-btn:hover {
+    background: #218838;
+  }
+
+</style>
+
+</head>
+<body>
+
+<div class="card">
+
+  <!-- ⭐ ADD EDUCATION PAGE BUTTON -->
+  <button class="top-btn" onclick="window.location.href='education.html'">
+    ➕ Add Education Details
+  </button>
+
+  <h2>Your Education Details</h2>
+
+  <form id="eduForm">
+
+    <label>Degree *</label>
+    <input type="text" id="degree">
+    <div class="error" id="err-degree"></div>
+
+    <label>Specialization *</label>
+    <input type="text" id="specialization">
+    <div class="error" id="err-specialization"></div>
+
+    <label>CGPA (0 - 10) *</label>
+    <input type="text" id="cgpa" placeholder="e.g. 8.5">
+    <div class="error" id="err-cgpa"></div>
+
+    <label>Graduation Year *</label>
+    <input type="text" id="year" placeholder="e.g. 2023">
+    <div class="error" id="err-year"></div>
+
+    <button class="btn" type="submit">Save</button>
+
+  </form>
+
+  <div id="success"></div>
+</div>
+
+<script>
+const API_BASE = "http://127.0.0.1:5000";
+
+function setError(id, msg){
+    document.getElementById("err-" + id).textContent = msg;
+}
+
+function clearErrors(){
+    document.querySelectorAll(".error").forEach(e => e.textContent = "");
+    document.getElementById("success").textContent = "";
+}
+
+document.getElementById("eduForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    clearErrors();
+
+    const degree = document.getElementById("degree").value.trim();
+    const specialization = document.getElementById("specialization").value.trim();
+    const cgpa = document.getElementById("cgpa").value.trim();
+    const year = document.getElementById("year").value.trim();
+    const currentYear = new Date().getFullYear();
+
+    // VALIDATION
+    let valid = true;
+
+    if (!degree){
+        setError("degree", "Degree is required");
+        valid = false;
+    }
+
+    if (!specialization){
+        setError("specialization", "Specialization is required");
+        valid = false;
+    }
+
+    if (!cgpa){
+        setError("cgpa", "CGPA is required");
+        valid = false;
+    } else {
+        const cg = Number(cgpa);
+        if (isNaN(cg)) { setError("cgpa", "CGPA must be a number"); valid=false; }
+        else if (cg < 0 || cg > 10){ setError("cgpa", "CGPA must be 0–10"); valid=false; }
+    }
+
+    if (!year){
+        setError("year", "Graduation year is required");
+        valid = false;
+    } else if (!/^\d{4}$/.test(year)){
+        setError("year", "Year must be 4 digits");
+        valid = false;
+    } else {
+        const y = Number(year);
+        if (y > currentYear){
+            setError("year", "Year cannot be in future");
+            valid=false;
+        }
+        if (y < 2000){
+            setError("year", "Year must be 2000 or later");
+            valid=false;
+        }
+    }
+
+    if (!valid) return;
+
+    // SEND TO BACKEND
+    try {
+        const token = localStorage.getItem("access_token");
+        const res = await fetch(API_BASE + "/profile/update", {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + token
+            },
+            body: JSON.stringify({
+                degree,
+                specialization,
+                cgpa,
+                year
+            })
+        });
+
+        const data = await res.json();
+
+        if (!res.ok){
+            document.getElementById("success").style.color = "red";
+            document.getElementById("success").textContent = data.error || "Update failed";
+        } else {
+            document.getElementById("success").style.color = "green";
+            document.getElementById("success").textContent = "Profile updated successfully!";
+        }
+
+    } catch (err) {
+        document.getElementById("success").textContent = "Network error!";
+    }
+});
+</script>
+
+</body>
+</html>

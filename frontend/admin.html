@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Edu2Job | Admin Console</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+    body { font-family: "Poppins", sans-serif; background: #f3eaff; display: flex; height: 100vh; margin: 0; overflow: hidden; }
+    
+    /* Sidebar */
+    .sidebar { width: 260px; background: #2c0458; color: white; padding: 30px 20px; display: flex; flex-direction: column; box-shadow: 4px 0 15px rgba(0,0,0,0.1); }
+    .logo { font-size: 22px; font-weight: 700; margin-bottom: 40px; display: flex; align-items: center; gap: 10px; color: #e0aaff; }
+    .menu-item { padding: 12px; margin-bottom: 10px; border-radius: 8px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 10px; }
+    .menu-item:hover { background: rgba(255,255,255,0.1); }
+    .logout { margin-top: auto; color: #ff8fa3; }
+    
+    .main { flex: 1; padding: 40px; overflow-y: auto; }
+    
+    /* Grid Layout */
+    .admin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 30px; }
+    
+    .card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+    .card h3 { color: #4b0ea5; margin-top: 0; border-bottom: 2px solid #f0f0f0; padding-bottom: 15px; font-size: 1.1em; display: flex; align-items: center; gap: 10px; }
+    
+    /* Upload Zone */
+    .drop-zone {
+        border: 2px dashed #9d4edd; border-radius: 10px; padding: 30px; text-align: center;
+        background: #f8f4ff; cursor: pointer; transition: 0.3s; margin-top: 15px;
+    }
+    .drop-zone:hover { background: #efe5ff; border-color: #7b2cbf; }
+    .drop-zone p { margin: 10px 0 0; color: #666; font-size: 0.9em; }
+
+    /* Buttons */
+    .btn-action {
+        width: 100%; padding: 12px; background: #4b0ea5; color: white; border: none;
+        border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 15px; transition: 0.3s;
+    }
+    .btn-action:hover { background: #3a0b85; }
+    .btn-action:disabled { background: #ccc; cursor: not-allowed; }
+
+    /* Table */
+    .full-width { grid-column: 1 / -1; }
+    .table-container { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th { text-align: left; padding: 15px; background: #f8f4ff; color: #4b0ea5; font-weight: 600; border-bottom: 2px solid #e0aaff; }
+    td { padding: 15px; border-bottom: 1px solid #eee; font-size: 0.9em; vertical-align: middle; }
+    tr:hover td { background: #fafafa; }
+    
+    /* Badges */
+    .conf-badge { padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 0.85em; }
+    .conf-high { background: #e8f5e9; color: #2e7d32; }
+    .conf-med { background: #fff3e0; color: #ef6c00; }
+    .conf-low { background: #ffebee; color: #c62828; }
+
+    .flag-btn { color: #d9534f; background: white; border: 1px solid #d9534f; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.8em; transition: 0.2s; }
+    .flag-btn:hover { background: #d9534f; color: white; }
+    .flagged-badge { background: #ffebee; color: #c62828; padding: 5px 10px; border-radius: 6px; font-weight: bold; font-size: 0.8em; display: inline-flex; align-items: center; gap: 5px; }
+
+    .star { color: #ffc107; font-size: 1.1em; }
+
+    /* Console */
+    .console-box {
+        background: #1a1a1a; color: #00ff00; font-family: 'Courier New', monospace;
+        padding: 20px; border-radius: 10px; height: 180px; overflow-y: auto;
+        font-size: 0.85em; border: 1px solid #333;
+    }
+    .log-entry { margin-bottom: 4px; border-bottom: 1px solid #333; padding-bottom: 2px; }
+    .log-entry.error { color: #ff5252; }
+    .log-entry.success { color: #69f0ae; }
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="logo"><i class="fa-solid fa-shield-halved"></i> Edu2Job Admin</div>
+    
+    <div class="menu-item" onclick="location.href='admin_home.html'">
+        <i class="fa-solid fa-chart-pie"></i> Dashboard
+    </div>
+
+    <div class="menu-item" onclick="location.href='admin_results.html'">
+        <i class="fa-solid fa-table"></i> Predictions
+    </div>
+
+    <div class="menu-item active" onclick="location.href='admin.html'">
+        <i class="fa-solid fa-gears"></i> System & Logs
+    </div>
+
+    <div class="menu-item logout" onclick="logout()">
+        <i class="fa-solid fa-right-from-bracket"></i> Logout
+    </div>
+</div>
+<div class="main">
+    <h1 style="color: #2c0458; margin-bottom: 10px;">System Overview</h1>
+    <p style="color: #666; margin-bottom: 30px;">Manage models, datasets, and monitor AI performance.</p>
+    
+    <div class="admin-grid">
+        <div class="card">
+            <h3><i class="fa-solid fa-database"></i> Dataset Management</h3>
+            <p style="font-size: 0.9em; color:#666;">Upload updated <code>education_career_success.csv</code> to retrain the model.</p>
+            
+            <input type="file" id="fileInput" hidden accept=".csv">
+            <div class="drop-zone" onclick="document.getElementById('fileInput').click()">
+                <i class="fa-solid fa-cloud-arrow-up" style="font-size: 40px; color: #9d4edd;"></i>
+                <p id="fileName">Click to Select CSV File</p>
+            </div>
+            
+            <button class="btn-action" onclick="uploadData()">
+                <i class="fa-solid fa-upload"></i> Upload & Validate
+            </button>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-brain"></i> Model Controller</h3>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <span>Status:</span>
+                <span style="color:green; font-weight:bold; background:#e8f5e9; padding:4px 8px; border-radius:4px;">● Live</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <span>Last Accuracy:</span>
+                <span id="accDisplay" style="font-weight:bold; color:#4b0ea5; font-size:1.2em;">--</span>
+            </div>
+            
+            <div style="background: #fff3cd; padding: 12px; border-radius: 8px; font-size: 0.85em; color: #856404; margin-bottom: 15px; border-left: 4px solid #ffc107;">
+                <i class="fa-solid fa-triangle-exclamation"></i> <strong>Note:</strong> Retraining uses strict domain rules and replaces the live model immediately.
+            </div>
+            
+            <button class="btn-action" id="retrainBtn" onclick="triggerRetrain()" disabled>
+                <i class="fa-solid fa-rotate"></i> Trigger Retraining
+            </button>
+        </div>
+
+        <div class="card full-width">
+            <h3><i class="fa-solid fa-users-viewfinder"></i> Live Predictions & Feedback</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date & Time</th>
+                            <th>User</th>
+                            <th>Top Prediction</th>
+                            <th>Confidence</th>
+                            <th>Rating</th>
+                            <th>User Feedback</th>
+                            <th style="text-align: right;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="logsTableBody">
+                        <tr><td colspan="7" style="text-align:center; padding: 20px;">Connecting to server...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="console-box" id="consoleLogs">
+        <div class="log-entry">[System] Admin console initialized...</div>
+        <div class="log-entry">[System] Waiting for backend connection...</div>
+    </div>
+</div>
+
+<script>
+    const API_BASE = 'http://127.0.0.1:5000'; 
+    const token = localStorage.getItem('access_token') || localStorage.getItem('token');
+    
+    if(!token) {
+        window.location.href = "login.html";
+    }
+
+    function log(msg, type='normal') {
+        const box = document.getElementById('consoleLogs');
+        const entry = document.createElement('div');
+        entry.className = `log-entry ${type}`;
+        const time = new Date().toLocaleTimeString();
+        entry.innerText = `[${time}] ${msg}`;
+        box.appendChild(entry);
+        box.scrollTop = box.scrollHeight;
+    }
+
+    // --- 1. LOAD LOGS (FIXED DATE & UNDEFINED ROLE) ---
+    async function loadLogs() {
+        try {
+            const res = await fetch(`${API_BASE}/admin/logs`, {
+                headers: { 'Authorization': 'Bearer ' + token }
+            });
+            
+            if(!res.ok) throw new Error("Authentication failed or server error");
+            
+            const logs = await res.json();
+            const tbody = document.getElementById('logsTableBody');
+            tbody.innerHTML = ''; 
+
+            if(logs.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding:20px; color:#999;">No predictions found in history.</td></tr>';
+                return;
+            }
+
+            console.log("Database Data:", logs[0]); 
+
+            logs.forEach(item => {
+                let starStr = item.rating > 0 ? 
+                    '<span class="star">' + '★'.repeat(item.rating) + '</span>' : 
+                    '<span style="color:#ccc; font-size:0.9em;">-</span>';
+                
+                let actionBtn = "";
+                if(item.flag === "flagged") {
+                    actionBtn = '<span class="flagged-badge"><i class="fa-solid fa-flag"></i> Reviewed</span>';
+                } else {
+                    actionBtn = `<button class="flag-btn" onclick="flagPrediction(${item.id})">Flag Error</button>`;
+                }
+
+                let confVal = parseFloat((item.confidence || "0").replace('%', ''));
+                let confClass = 'conf-low';
+                if(confVal >= 85) confClass = 'conf-high';
+                else if(confVal >= 60) confClass = 'conf-med';
+
+                // SAFE FETCH ROLE
+                let displayRole = item.role || item.top_role || item.prediction || '<span style="color:red;">No Data</span>';
+
+                // 🟢 FIXED DATE DISPLAY (Shows full Date & Time)
+                let displayDate = item.date ? item.date : '<span style="color:#999;">--</span>';
+
+                let row = `
+                    <tr>
+                        <td style="color:#666; font-size:0.9em;">${displayDate}</td>
+                        <td style="font-weight:600;">${item.user}</td>
+                        <td style="color:#4b0ea5; font-weight:600;">${displayRole}</td>
+                        <td><span class="conf-badge ${confClass}">${item.confidence || "0%"}</span></td>
+                        <td>${starStr}</td>
+                        <td style="max-width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${item.feedback}">${item.feedback || ''}</td>
+                        <td style="text-align: right;">${actionBtn}</td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+            log("Logs updated successfully.", "success");
+
+        } catch (err) {
+            console.error(err);
+            document.getElementById('logsTableBody').innerHTML = '<tr><td colspan="7" style="text-align:center; color:red;">Server Offline or Unauthorized</td></tr>';
+            log("Error loading logs: " + err.message, "error");
+        }
+    }
+
+    // --- 2. FLAG PREDICTION (FIXED) ---
+    async function flagPrediction(id) {
+        if(!id) { alert("Error: ID is missing for this log."); return; }
+        if(!confirm("Mark this prediction as incorrect?")) return;
+
+        try {
+            const res = await fetch(`${API_BASE}/admin/flag`, {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json', 
+                    'Authorization': 'Bearer ' + token 
+                },
+                body: JSON.stringify({ log_id: id })
+            });
+
+            const data = await res.json();
+
+            if(res.ok) { 
+                log(`Log #${id} flagged.`, "success"); 
+                loadLogs(); 
+            } else {
+                alert("Flag Failed: " + (data.error || "Unknown Error"));
+            }
+        } catch (err) { console.error(err); alert("Network Error"); }
+    }
+
+    // --- 3. UPLOAD LOGIC ---
+    document.getElementById('fileInput').addEventListener('change', function(e){
+        if(e.target.files[0]) {
+            document.getElementById('fileName').innerText = e.target.files[0].name;
+            document.getElementById('fileName').style.color = "#4b0ea5";
+            document.getElementById('fileName').style.fontWeight = "bold";
+        }
+    });
+
+    async function uploadData() {
+        const fileInput = document.getElementById('fileInput');
+        if (!fileInput.files[0]) { alert("Please select a file first."); return; }
+        const formData = new FormData();
+        formData.append('file', fileInput.files[0]);
+        log("Uploading dataset...", "normal");
+        try {
+            const res = await fetch(`${API_BASE}/admin/upload`, {
+                method: 'POST',
+                headers: { 'Authorization': 'Bearer ' + token },
+                body: formData
+            });
+            const data = await res.json();
+            if (res.ok) {
+                log("Upload Complete.", "success");
+                document.getElementById('retrainBtn').disabled = false;
+                alert("File uploaded. You can now trigger retraining.");
+            } else { log("Upload Failed: " + data.error, "error"); }
+        } catch (err) { log("Network Error.", "error"); }
+    }
+
+    // --- 4. RETRAIN LOGIC ---
+    async function triggerRetrain() {
+        const btn = document.getElementById('retrainBtn');
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Training...';
+        btn.disabled = true;
+        log("Retraining...", "normal");
+        try {
+            const res = await fetch(`${API_BASE}/admin/retrain`, {
+                method: 'POST',
+                headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' }
+            });
+            const data = await res.json();
+            if (res.ok) {
+                log("Training Successful.", "success");
+                document.getElementById('accDisplay').innerText = data.new_accuracy;
+                alert("Model updated!");
+            } else { log("Error: " + data.error, "error"); }
+        } catch (err) { log("Server Error.", "error"); } 
+        finally { btn.innerHTML = '<i class="fa-solid fa-rotate"></i> Trigger Retraining'; btn.disabled = false; }
+    }
+
+    function logout() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('access_token');
+        window.location.href = 'login.html';
+    }
+
+    document.addEventListener("DOMContentLoaded", loadLogs);
+
+</script>
+
+</body>
+</html>

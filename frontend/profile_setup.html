@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Edu2Job — Profile Setup</title>
+<link rel="icon" href="#" />
+<style>
+  /* Basic Bolt-like, clean style */
+  :root{
+    --purple:#6b10c5;
+    --accent:#7b2cbf;
+    --muted:#7b7b7b;
+    --card:#ffffff;
+    --bg:#f6f3fb;
+    --success:#2ea44f;
+    font-family: "Poppins", sans-serif;
+  }
+  body{margin:0;background:var(--bg);color:#222}
+  .container{max-width:920px;margin:36px auto;padding:28px}
+  .header{text-align:center;margin-bottom:18px}
+  .header h1{margin:0;color:var(--purple);font-size:28px}
+  .sub{color:var(--muted);margin-top:8px}
+  .progress-wrap{display:flex;align-items:center;justify-content:space-between;margin:18px 0}
+  .progress-label{font-weight:600;color:var(--muted)}
+  .progress{flex:1;height:10px;background:#eee;border-radius:8px;margin-left:18px;margin-right:18px;overflow:hidden}
+  .progress > .fill{height:100%;background:var(--accent);width:0;transition:width .3s ease}
+
+  .card{background:var(--card);border-radius:14px;padding:26px;box-shadow:0 10px 30px rgba(0,0,0,0.06)}
+  .step-title{font-size:20px;color:var(--purple);margin-bottom:8px}
+  .field{margin:12px 0}
+  label{display:block;font-weight:600;margin-bottom:6px}
+  input[type="text"], input[type="email"], input[type="number"], select, textarea{
+    width:100%;padding:12px;border-radius:8px;border:1px solid #dcd7e8;font-size:15px;box-sizing:border-box;
+  }
+  textarea{min-height:90px;resize:vertical}
+  .row{display:flex;gap:14px}
+  .col{flex:1}
+  .inline-help{font-size:13px;color:var(--muted);margin-top:6px}
+
+  .btn-row{display:flex;gap:12px;justify-content:flex-end;margin-top:18px}
+  .btn{padding:12px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+  .btn.ghost{background:#fff;color:var(--accent);border:2px solid var(--accent)}
+  .btn.primary{background:var(--accent);color:#fff}
+  .btn.back{background:#fff;border:1px solid #eee;color:#444}
+  .error{color:#d33;margin-top:6px;font-size:13px}
+
+  /* step indicators */
+  .steps{display:flex;gap:8px;justify-content:center;margin-top:16px}
+  .step-dot{width:10px;height:10px;border-radius:50%;background:#ddd}
+  .step-dot.active{background:var(--accent)}
+
+  /* review display */
+  .review-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed #eee}
+  .review-row:last-child{border-bottom:none}
+  .success-msg{padding:12px;background:#edfff1;border-radius:8px;color:var(--success);margin-top:12px}
+  @media (max-width:760px){.row{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Profile Setup</h1>
+    <div class="sub">Let's get to know you better to provide personalized recommendations</div>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-label" id="progressLabel">Step 1 of 4</div>
+    <div class="progress"><div class="fill" id="progressFill"></div></div>
+    <div class="progress-label" id="progressPct">25% Complete</div>
+  </div>
+
+  <div class="card">
+    <div id="step-1" class="step">
+      <div class="step-title">Personal Information</div>
+      <div class="field">
+        <label>Full name</label>
+        <input type="text" id="fullName" placeholder="Your full name">
+        <div class="error" id="err-name"></div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="field">
+            <label>Email</label>
+            <input type="email" id="email" disabled>
+          </div>
+        </div>
+        <div class="col">
+          <div class="field">
+            <label>Phone (optional)</label>
+            <input type="text" id="phone" placeholder="e.g. +91 98xxxxxxxx">
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn primary" onclick="nextStep()">Next</button>
+      </div>
+    </div>
+
+    <div id="step-2" class="step" style="display:none">
+  <div class="step-title">Education Background</div>
+
+  <div class="row">
+    <div class="col">
+      <div class="field">
+        <label>Degree *</label>
+        <select id="degree" onchange="toggleDegreeOther()">
+          <option value="">Select your degree</option>
+
+          <optgroup label="B.Tech (Bachelor of Technology)">
+            <option>B.Tech</option>
+          </optgroup>
+
+          <optgroup label="BBA (Bachelor of Business Administration)">
+            <option>BBA</option>
+          </optgroup>
+
+          <optgroup label="MBA (Master of Business Administration)">
+            <option>MBA</option>
+          </optgroup>
+
+          <optgroup label="B.Des (Bachelor of Design)">
+            <option>B.Des</option>
+          </optgroup>
+
+          <optgroup label="BA (Bachelor of Arts)">
+            <option>BA</option>
+          </optgroup>
+
+          <optgroup label="B.Com (Bachelor of Commerce)">
+            <option>B.Com</option>
+          </optgroup>
+
+          <optgroup label="B.Sc (Bachelor of Science)">
+            <option>B.Sc</option>
+          </optgroup>
+
+          <optgroup label="M.Tech (Master of Technology)">
+            <option>M.Tech</option>
+          </optgroup>
+
+          <optgroup label="M.Sc (Master of Science)">
+            <option>M.Sc</option>
+          </optgroup>
+
+          <option value="Other">Other</option>
+        </select>
+
+        <input type="text" id="degree_other" placeholder="Enter your degree"
+               style="display:none;margin-top:8px">
+
+        <div class="error" id="err-degree"></div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="field">
+        <label>Specialization</label>
+        <select id="specialization" onchange="toggleSpecOther()">
+          <option value="">Select specialization</option>
+
+          <optgroup label="B.Tech Specializations">
+            <option>Computer Science Engineering</option>
+            <option>Information Technology</option>
+            <option>Electronics & Communication Engineering</option>
+            <option>Electrical & Electronics Engineering</option>
+            <option>Electrical Engineering</option>
+            <option>Mechanical Engineering</option>
+            <option>Civil Engineering</option>
+            <option>Chemical Engineering</option>
+            <option>AI & Machine Learning</option>
+            <option>AI & Data Science</option>
+            <option>Robotics & Automation</option>
+            <option>Cybersecurity</option>
+            <option>Data Science</option>
+            <option>Biotechnology</option>
+            <option>Biomedical Engineering</option>
+            <option>Aerospace Engineering</option>
+            <option>Aeronautical Engineering</option>
+            <option>Automobile Engineering</option>
+            <option>Mechatronics Engineering</option>
+            <option>Mining Engineering</option>
+            <option>Petroleum Engineering</option>
+            <option>Food Technology</option>
+            <option>Textile Engineering</option>
+            <option>Environmental Engineering</option>
+            <option>Marine Engineering</option>
+            <option>Agriculture Engineering</option>
+            <option>Production Engineering</option>
+            <option>Metallurgical Engineering</option>
+            <option>Instrumentation Engineering</option>
+          </optgroup>
+
+          <optgroup label="BBA Specializations">
+            <option>Finance</option>
+            <option>Marketing</option>
+            <option>Human Resource Management</option>
+            <option>Business Analytics</option>
+            <option>International Business</option>
+            <option>Logistics & Supply Chain Management</option>
+            <option>Operations Management</option>
+            <option>Entrepreneurship</option>
+            <option>Hospitality Management</option>
+            <option>Travel & Tourism</option>
+            <option>Retail Management</option>
+            <option>Banking & Insurance</option>
+            <option>Digital Marketing</option>
+            <option>Aviation Management</option>
+            <option>Healthcare Management</option>
+          </optgroup>
+
+          <optgroup label="MBA Specializations">
+            <option>Finance</option>
+            <option>Marketing</option>
+            <option>Human Resource</option>
+            <option>Business Analytics</option>
+            <option>International Business</option>
+            <option>Operations Management</option>
+            <option>Logistics & Supply Chain</option>
+            <option>Hospitality & Tourism</option>
+            <option>IT Management</option>
+            <option>Healthcare Management</option>
+            <option>Entrepreneurship</option>
+            <option>Retail Management</option>
+            <option>Digital Marketing</option>
+            <option>Banking & Financial Services</option>
+            <option>Agri-Business Management</option>
+            <option>Aviation Management</option>
+          </optgroup>
+
+          <optgroup label="B.Des Specializations">
+            <option>Fashion Design</option>
+            <option>Interior Design</option>
+            <option>Product Design</option>
+            <option>Communication Design</option>
+            <option>Graphic Design</option>
+            <option>UI/UX Design</option>
+            <option>Industrial Design</option>
+            <option>Animation & Multimedia</option>
+            <option>Game Design</option>
+            <option>Textile Design</option>
+            <option>Jewellery Design</option>
+          </optgroup>
+
+          <optgroup label="BA Specializations">
+            <option>English</option>
+            <option>Psychology</option>
+            <option>Sociology</option>
+            <option>Economics</option>
+            <option>Political Science</option>
+            <option>History</option>
+            <option>Geography</option>
+            <option>Journalism & Mass Communication</option>
+            <option>Public Administration</option>
+            <option>Philosophy</option>
+            <option>Education</option>
+            <option>Hindi</option>
+            <option>Tamil</option>
+            <option>Telugu</option>
+            <option>Kannada</option>
+            <option>Malayalam</option>
+            <option>Sanskrit</option>
+            <option>Fine Arts</option>
+            <option>Performing Arts</option>
+          </optgroup>
+
+          <optgroup label="B.Com Specializations">
+            <option>Accounting & Finance</option>
+            <option>Banking & Insurance</option>
+            <option>Taxation</option>
+            <option>Auditing</option>
+            <option>Computer Applications</option>
+            <option>Business Analytics</option>
+            <option>Economics</option>
+            <option>Financial Markets</option>
+            <option>International Business</option>
+            <option>Corporate Secretaryship</option>
+          </optgroup>
+
+          <optgroup label="B.Sc Specializations">
+            <option>Computer Science</option>
+            <option>Information Technology</option>
+            <option>Mathematics</option>
+            <option>Physics</option>
+            <option>Chemistry</option>
+            <option>Electronics</option>
+            <option>Biotechnology</option>
+            <option>Microbiology</option>
+            <option>Data Science</option>
+            <option>Artificial Intelligence</option>
+            <option>Statistics</option>
+            <option>Agriculture</option>
+            <option>Forensic Science</option>
+            <option>Environmental Science</option>
+            <option>Psychology</option>
+            <option>Nutrition & Dietetics</option>
+            <option>Fashion Design</option>
+            <option>Nursing</option>
+          </optgroup>
+
+          <optgroup label="M.Tech Specializations">
+            <option>Computer Science Engineering</option>
+            <option>Information Technology</option>
+            <option>Data Science</option>
+            <option>Artificial Intelligence</option>
+            <option>Machine Learning</option>
+            <option>Cybersecurity</option>
+            <option>VLSI</option>
+            <option>Embedded Systems</option>
+            <option>Power Systems</option>
+            <option>Thermal Engineering</option>
+            <option>Structural Engineering</option>
+            <option>Robotics</option>
+            <option>Biotechnology</option>
+            <option>Environmental Engineering</option>
+            <option>Mechanical Design</option>
+            <option>Manufacturing Engineering</option>
+            <option>Transportation Engineering</option>
+          </optgroup>
+
+          <optgroup label="M.Sc Specializations">
+            <option>Computer Science</option>
+            <option>Information Technology</option>
+            <option>Mathematics</option>
+            <option>Physics</option>
+            <option>Chemistry</option>
+            <option>Electronics</option>
+            <option>Data Science</option>
+            <option>Artificial Intelligence</option>
+            <option>Statistics</option>
+            <option>Biotechnology</option>
+            <option>Microbiology</option>
+            <option>Agriculture</option>
+            <option>Environmental Science</option>
+            <option>Psychology</option>
+            <option>Food Science & Nutrition</option>
+            <option>Forensic Science</option>
+          </optgroup>
+
+          <option value="Other">Other</option>
+        </select>
+
+        <input type="text" id="spec_other" placeholder="Enter your specialization"
+               style="display:none;margin-top:8px">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="field">
+        <label>CGPA (0–10)</label>
+        <input type="number" id="cgpa" step="0.01" placeholder="e.g. 8.25">
+        <div class="error" id="err-cgpa"></div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="field">
+        <label>Graduation Year *</label>
+        <select id="gradYear"></select>
+        <div class="error" id="err-year"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>University / Institute (optional)</label>
+    <input type="text" id="university" placeholder="e.g. Anna University">
+  </div>
+
+  <div class="btn-row">
+    <button class="btn back" onclick="prevStep()">Back</button>
+    <button class="btn primary" onclick="nextStep()">Next</button>
+  </div>
+</div>
+
+
+    <div id="step-3" class="step" style="display:none">
+      <div class="step-title">Skills & Experience</div>
+
+      <div class="field">
+        <label>Key skills (comma separated)</label>
+        <input type="text" id="skills" placeholder="e.g. Python, SQL, Data Analysis">
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="field">
+            <label>Certifications (optional)</label>
+            <input type="text" id="certifications" placeholder="e.g. AWS Certified, Coursera">
+          </div>
+        </div>
+        <div class="col">
+          <div class="field">
+            <label>Internship Experience</label>
+            <select id="internship">
+              <option>No</option><option>Yes</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="field">
+            <label>Internship Duration (months)</label>
+            <input type="number" id="internDuration" min="0" placeholder="0">
+          </div>
+        </div>
+        <div class="col">
+          <div class="field">
+            <label>Preferred Role</label>
+            <input type="text" id="preferredRole" placeholder="e.g. Data Analyst">
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn back" onclick="prevStep()">Back</button>
+        <button class="btn primary" onclick="nextStep()">Next</button>
+      </div>
+    </div>
+
+    <div id="step-4" class="step" style="display:none">
+      <div class="step-title">Review & Submit</div>
+
+      <div id="reviewArea">
+          <div class="review-row"><div style="color:#666">Degree</div><div id="review_degree">--</div></div>
+          <div class="review-row"><div style="color:#666">Specialization</div><div id="review_spec">--</div></div>
+          <div class="review-row"><div style="color:#666">University</div><div id="review_university">--</div></div>
+          <div class="review-row"><div style="color:#666">Year</div><div id="review_year">--</div></div>
+          <div class="review-row"><div style="color:#666">CGPA</div><div id="review_cgpa">--</div></div>
+          
+          <div style="height:15px"></div>
+          <div class="review-row"><div style="color:#666">Skills</div><div id="review_skills">--</div></div>
+          <div class="review-row"><div style="color:#666">Certifications</div><div id="review_certs">--</div></div>
+          <div class="review-row"><div style="color:#666">Internship</div><div id="review_intern">--</div></div>
+          <div class="review-row"><div style="color:#666">Preferred Role</div><div id="review_role">--</div></div>
+      </div>
+
+      <div id="submitError" class="error"></div>
+      <div id="submitSuccess" class="success-msg" style="display:none">Saved successfully.</div>
+
+     <div class="btn-row">
+        <button class="btn back" onclick="prevStep()">Back</button>
+        <button type="button" class="btn primary" onclick="submitProfile()">Submit & Finish</button>
+      </div>
+    </div>
+
+    <div class="steps" id="dots">
+      <div class="step-dot active"></div>
+      <div class="step-dot"></div>
+      <div class="step-dot"></div>
+      <div class="step-dot"></div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+<script>
+let currentStep = 1;
+const totalSteps = 4;
+
+/* ----------------- PREFILL & INIT ----------------- */
+document.addEventListener("DOMContentLoaded", async () => {
+    // Populate Years
+    const sel = document.getElementById("gradYear");
+    const now = new Date().getFullYear();
+    let html = '<option value="">Select year</option>';
+    for(let y = now+5; y >= now - 40; y--){ html += `<option value="${y}">${y}</option>`; }
+    sel.innerHTML = html;
+
+    // Prefill Data
+    await prefillFromProfile();
+});
+
+/* ----------------- NAVIGATION ----------------- */
+function updateProgress(){
+  const pct = Math.round((currentStep/totalSteps)*100);
+  document.getElementById("progressFill").style.width = pct + "%";
+  document.getElementById("progressLabel").textContent = `Step ${currentStep} of ${totalSteps}`;
+  document.getElementById("progressPct").textContent = pct + "% Complete";
+  document.querySelectorAll(".step-dot").forEach((d,i)=> d.classList.toggle("active", i < currentStep));
+}
+
+function showStep(n){
+  for(let i=1;i<=totalSteps;i++){
+    const el = document.getElementById("step-" + i);
+    if(el) el.style.display = (i === n) ? "block" : "none";
+  }
+  currentStep = n;
+  updateProgress();
+}
+
+function prevStep(){ if(currentStep > 1) showStep(currentStep-1); }
+
+// 🟢 2. NEXT STEP LOGIC (Calls populateReview)
+function nextStep(){
+  if(!validateStep(currentStep)) return;
+  
+  if(currentStep === 3) {
+      populateReview(); // Update Step 4 data before showing it
+  }
+
+  if(currentStep < totalSteps) showStep(currentStep+1);
+}
+
+/* ----------------- VALIDATION ----------------- */
+function validateStep(step) {
+  clearErrors();
+
+  if (step === 1) {
+    const name = document.getElementById("fullName").value.trim();
+    if (!name) { showError("err-name", "Name is required"); return false; }
+    return true;
+  }
+
+  if (step === 2) {
+    let degree = document.getElementById("degree").value;
+    const cgpa = document.getElementById("cgpa").value.trim();
+    const year = document.getElementById("gradYear").value.trim();
+
+    if (!degree) { showError("err-degree", "Degree is required"); return false; }
+    if (degree === "Other") {
+      if (!document.getElementById("degree_other").value.trim()) {
+        showError("err-degree", "Please enter your degree"); return false;
+      }
+    }
+
+    if (!cgpa) { showError("err-cgpa", "CGPA is required"); return false; }
+    const cg = Number(cgpa);
+    if (isNaN(cg) || cg < 0 || cg > 10) { showError("err-cgpa", "CGPA must be 0-10"); return false; }
+
+    if (!year) { showError("err-year", "Year required"); return false; }
+
+    return true;
+  }
+  return true;
+}
+
+function showError(id,msg){ const el = document.getElementById(id); if(el) el.textContent = msg; }
+function clearErrors(){ 
+    ["err-name","err-degree","err-cgpa","err-year","submitError"].forEach(id=>{ 
+        const e=document.getElementById(id); if(e) e.textContent=""; 
+    }); 
+}
+
+/* ----------------- POPULATE REVIEW FUNCTION ----------------- */
+function populateReview() {
+    console.log("Populating review...");
+    
+    // Get inputs
+    const degree = document.getElementById("degree").value === "Other" ? 
+                   document.getElementById("degree_other").value : document.getElementById("degree").value;
+                   
+    const spec = document.getElementById("specialization").value === "Other" ?
+                 document.getElementById("spec_other").value : document.getElementById("specialization").value;
+
+    const univ = document.getElementById("university").value;
+    const year = document.getElementById("gradYear").value;
+    const cgpa = document.getElementById("cgpa").value;
+    const skills = document.getElementById("skills").value;
+    const certs = document.getElementById("certifications").value;
+    const intern = document.getElementById("internship").value;
+    const dur = document.getElementById("internDuration").value;
+    const role = document.getElementById("preferredRole").value;
+
+    // Set Text
+    document.getElementById("review_degree").innerText = degree || "--";
+    document.getElementById("review_spec").innerText = spec || "--";
+    document.getElementById("review_university").innerText = univ || "--";
+    document.getElementById("review_year").innerText = year || "--";
+    document.getElementById("review_cgpa").innerText = cgpa || "--";
+    
+    document.getElementById("review_skills").innerText = skills || "--";
+    document.getElementById("review_certs").innerText = certs || "--";
+    
+    let internTxt = intern;
+    if(intern === "Yes" && dur) internTxt += ` (${dur} months)`;
+    document.getElementById("review_intern").innerText = internTxt;
+    
+    document.getElementById("review_role").innerText = role || "--";
+}
+
+/* ----------------- SUBMIT ----------------- */
+async function submitProfile() {
+    clearErrors();
+    const btn = document.querySelector("#step-4 .btn.primary");
+    const originalText = btn.textContent;
+    btn.textContent = "Saving...";
+    btn.disabled = true;
+
+    // 1. Gather Data
+    let degreeValue = document.getElementById("degree").value;
+    if (degreeValue === "Other") degreeValue = document.getElementById("degree_other").value.trim();
+
+    let specValue = document.getElementById("specialization").value;
+    if (specValue === "Other") specValue = document.getElementById("spec_other").value.trim();
+
+    const payload = {
+        username: document.getElementById("fullName").value.trim(),
+        degree: degreeValue,
+        specialization: specValue,
+        cgpa: Number(document.getElementById("cgpa").value),
+        year: document.getElementById("gradYear").value,
+        university: document.getElementById("university").value.trim(),
+        certifications: document.getElementById("certifications").value.trim(),
+        skills: document.getElementById("skills").value.trim(),
+        internship: document.getElementById("internship").value,
+        duration: document.getElementById("internDuration").value,
+        phone: document.getElementById("phone").value.trim(),
+        preferred_role: document.getElementById("preferredRole").value.trim()
+    };
+
+    try {
+        const token = localStorage.getItem("access_token");
+        
+        // 2. Send to Backend
+        const res = await fetch("http://127.0.0.1:5000/profile/update", {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + token
+            },
+            body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+            document.getElementById("submitError").textContent = data.error || "Save failed";
+            btn.textContent = originalText;
+            btn.disabled = false;
+            return;
+        }
+
+        // 3. AUTO-UPDATE TOKEN (Fixes 404 on name change)
+        if (data.token) {
+            console.log("Name changed: Updating token...");
+            localStorage.setItem("access_token", data.token);
+            if(payload.username) localStorage.setItem("google_name", payload.username);
+        }
+        
+        // Clear old predictions since profile changed
+        sessionStorage.removeItem("cached_recommendations");
+        sessionStorage.removeItem("prediction_done");
+        
+        // 4. Success -> Redirect
+        document.getElementById("submitSuccess").style.display = "block";
+        setTimeout(() => {
+             window.location.href = "dashboard.html"; 
+        }, 1000);
+
+    } catch (err) {
+        console.error(err);
+        document.getElementById("submitError").textContent = "Network error.";
+        btn.textContent = originalText;
+        btn.disabled = false;
+    }
+}
+
+/* ----------------- HELPERS ----------------- */
+function toggleDegreeOther() {
+    const isOther = document.getElementById("degree").value === "Other";
+    document.getElementById("degree_other").style.display = isOther ? "block" : "none";
+}
+
+function toggleSpecOther() {
+    const isOther = document.getElementById("specialization").value === "Other";
+    document.getElementById("spec_other").style.display = isOther ? "block" : "none";
+}
+
+async function prefillFromProfile() {
+    try {
+        if (typeof fetchProfile !== "function") return;
+        const data = await fetchProfile();
+
+        // Fill Fields
+        document.getElementById("fullName").value = data.username || "";
+        document.getElementById("email").value = data.email || "";
+        if(data.phone) document.getElementById("phone").value = data.phone;
+        
+        // Degree
+        const dSel = document.getElementById("degree");
+        if(data.degree){
+            const exists = [...dSel.options].some(o => o.value === data.degree);
+            dSel.value = exists ? data.degree : "Other";
+            if(!exists) {
+                document.getElementById("degree_other").style.display = "block";
+                document.getElementById("degree_other").value = data.degree;
+            }
+        }
+
+        // Specialization
+        const sSel = document.getElementById("specialization");
+        if(data.specialization){
+            const exists = [...sSel.options].some(o => o.value === data.specialization);
+            sSel.value = exists ? data.specialization : "Other";
+            if(!exists) {
+                document.getElementById("spec_other").style.display = "block";
+                document.getElementById("spec_other").value = data.specialization;
+            }
+        }
+
+        if(data.cgpa) document.getElementById("cgpa").value = data.cgpa;
+        if(data.year) document.getElementById("gradYear").value = data.year;
+        if(data.university) document.getElementById("university").value = data.university;
+        if(data.skills) document.getElementById("skills").value = data.skills;
+        if(data.certifications) document.getElementById("certifications").value = data.certifications;
+        if(data.internship) document.getElementById("internship").value = data.internship;
+        if(data.duration) document.getElementById("internDuration").value = data.duration;
+        if(data.preferred_role) document.getElementById("preferredRole").value = data.preferred_role;
+
+    } catch(e) { console.log("Prefill skipped or failed"); }
+}
+</script>
+</body>
+</html>

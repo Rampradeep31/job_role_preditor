@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+    body { font-family: "Poppins", sans-serif; background: #f0f2f5; margin: 0; display: flex; height: 100vh; overflow: hidden; }
+    
+    .sidebar { width: 260px; background: #1e1e2d; color: #fff; display: flex; flex-direction: column; padding: 20px; }
+    .logo { font-size: 22px; margin-bottom: 40px; color: #fff; font-weight: bold; }
+    .nav-item { padding: 15px; border-radius: 10px; cursor: pointer; color: #a2a3b7; display: flex; gap: 15px; transition: 0.3s; margin-bottom: 5px; }
+    .nav-item:hover, .nav-item.active { background: #1b1b28; color: #3699ff; }
+    
+    .main { flex: 1; padding: 30px; overflow-y: auto; }
+    .header { margin-bottom: 30px; } .header h1 { margin: 0; color: #3f4254; }
+
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; margin-bottom: 30px; }
+    .stat-card { background: #fff; padding: 25px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 0 20px 0 rgba(76,87,125,0.02); }
+    .stat-info h3 { font-size: 32px; margin: 0; } .stat-info p { margin: 5px 0 0; color: #b5b5c3; font-size: 14px; }
+    .icon-box { width: 50px; height: 50px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+    
+    .charts-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 25px; }
+    .chart-box { background: #fff; padding: 25px; border-radius: 12px; }
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="logo"><i class="fa-solid fa-shield-halved"></i> Edu2Job Admin</div>
+    <div class="nav-item active"><i class="fa-solid fa-chart-pie"></i> Dashboard</div>
+    <div class="nav-item" onclick="location.href='admin_results.html'"><i class="fa-solid fa-table"></i> Predictions</div>
+    <div class="nav-item" onclick="location.href='admin.html'"><i class="fa-solid fa-gears"></i> Settings & Logs</div>
+    <div class="nav-item" onclick="logout()" style="margin-top:auto;"><i class="fa-solid fa-right-from-bracket"></i> Logout</div>
+</div>
+
+<div class="main">
+    <div class="header"><h1>Overview</h1></div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-info"><h3 id="totalPreds">--</h3><p>Total Predictions</p></div>
+            <div class="icon-box" style="background:#e1f0ff; color:#3699ff;"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-info"><h3 id="avgConf">--%</h3><p>Avg. Confidence</p></div>
+            <div class="icon-box" style="background:#c9f7f5; color:#1bc5bd;"><i class="fa-solid fa-chart-line"></i></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-info"><h3 id="flaggedCount" style="color:#f64e60;">--</h3><p>Flagged Issues</p></div>
+            <div class="icon-box" style="background:#ffe2e5; color:#f64e60;"><i class="fa-solid fa-flag"></i></div>
+        </div>
+    </div>
+
+    <div class="charts-grid">
+        <div class="chart-box"><h3>Activity Trend</h3><canvas id="trendChart"></canvas></div>
+        <div class="chart-box"><h3>Roles</h3><canvas id="categoryChart"></canvas></div>
+    </div>
+</div>
+
+<script>
+    const token = localStorage.getItem('access_token');
+    if(!token) window.location.href="login.html";
+
+    async function loadData() {
+        try {
+            const res = await fetch("http://127.0.0.1:5000/admin/logs", { headers: {'Authorization': 'Bearer '+token} });
+            const logs = await res.json();
+            
+            document.getElementById('totalPreds').innerText = logs.length;
+            const flagged = logs.filter(l => l.flag === 'flagged').length;
+            document.getElementById('flaggedCount').innerText = flagged;
+            
+            const avg = logs.reduce((sum, l) => sum + parseFloat(l.confidence), 0) / logs.length;
+            document.getElementById('avgConf').innerText = isNaN(avg) ? "0%" : avg.toFixed(1) + "%";
+
+            renderCharts(logs);
+        } catch(e) { console.error(e); }
+    }
+
+    function renderCharts(logs) {
+        const dates = {};
+        logs.forEach(l => { const d = l.date.split(' ')[0]; dates[d] = (dates[d]||0)+1; });
+        
+        new Chart(document.getElementById('trendChart'), {
+            type: 'line',
+            data: { labels: Object.keys(dates).slice(-7), datasets: [{ label: 'Predictions', data: Object.values(dates).slice(-7), borderColor: '#3699ff', tension: 0.4 }] }
+        });
+
+        const roles = { "Tech": 0, "Engg": 0, "Biz": 0 };
+        logs.forEach(l => {
+            if(l.role && (l.role.includes("Software") || l.role.includes("Data"))) roles["Tech"]++;
+            else if(l.role && l.role.includes("Engineer")) roles["Engg"]++;
+            else roles["Biz"]++;
+        });
+
+        new Chart(document.getElementById('categoryChart'), {
+            type: 'doughnut',
+            data: { labels: ['Tech', 'Engineering', 'Business'], datasets: [{ data: Object.values(roles), backgroundColor: ['#3699ff', '#1bc5bd', '#8950fc'] }] }
+        });
+    }
+    
+    function logout() { localStorage.removeItem('token'); window.location.href = 'login.html'; }
+    loadData();
+</script>
+</body>
+</html>

@@ -1,0 +1,751 @@
+Degree,Field_of_Study,University_GPA,Certifications,Internships_Completed,Job_Roles
+B.Tech,Mechanical,7.7,CPA,0,Structural Engineer
+B.Tech,Mechanical,9.2,Java,1,VLSI Engineer
+B.Tech,Information Technology,6.61,AWS,3,Software Developer
+B.Tech,Mechanical,9.43,Python,3,Structural Engineer
+B.Tech,Civil,6.26,None,0,Project Manager
+B.Tech,Electronics,8.54,CPA,0,VLSI Engineer
+B.Tech,Computer Science,6.37,None,0,Project Manager
+B.Tech,Information Technology,7.83,CPA,1,AI Engineer
+B.Tech,Civil,9.41,AWS,3,VLSI Engineer
+B.Tech,Civil,6.04,Python,0,AI Engineer
+B.Tech,Electronics,7.82,Python,3,VLSI Engineer
+B.Tech,Electronics,7.02,AWS,0,AI Engineer
+B.Tech,Civil,9.67,Java,1,Project Manager
+B.Tech,Information Technology,6.06,Java,0,Project Manager
+B.Tech,Information Technology,9.6,AWS,2,Project Manager
+B.Tech,Computer Science,8.7,None,2,Project Manager
+B.Tech,Mechanical,9.62,Python,0,Software Developer
+B.Tech,Mechanical,7.68,None,1,VLSI Engineer
+B.Tech,Electronics,6.69,CPA,2,AI Engineer
+B.Tech,Mechanical,9.61,Java,3,Project Manager
+B.Tech,Computer Science,8.85,AWS,1,Project Manager
+B.Tech,Civil,8.32,Python,0,Software Developer
+B.Tech,Computer Science,7.24,None,2,Project Manager
+B.Tech,Information Technology,6.28,Java,2,AI Engineer
+B.Tech,Electronics,7.52,Java,3,AI Engineer
+B.Tech,Computer Science,8.59,Java,0,VLSI Engineer
+B.Tech,Civil,6.54,Java,3,VLSI Engineer
+B.Tech,Civil,8.17,None,1,Structural Engineer
+B.Tech,Civil,9.05,CPA,0,Structural Engineer
+B.Tech,Mechanical,6.93,AWS,0,VLSI Engineer
+B.Tech,Computer Science,7.47,Java,0,Structural Engineer
+B.Tech,Computer Science,8.3,AWS,0,Project Manager
+B.Tech,Civil,9.48,None,3,Software Developer
+B.Tech,Information Technology,7.94,Java,3,VLSI Engineer
+B.Tech,Computer Science,9.22,CPA,2,Structural Engineer
+B.Tech,Information Technology,9.16,None,0,Software Developer
+B.Tech,Civil,8.83,AWS,0,Project Manager
+B.Tech,Computer Science,8.43,CPA,2,VLSI Engineer
+B.Tech,Computer Science,8.45,AWS,2,VLSI Engineer
+B.Tech,Civil,8.67,Java,2,AI Engineer
+B.Tech,Civil,7.92,Java,0,VLSI Engineer
+B.Tech,Information Technology,9.88,None,0,AI Engineer
+B.Tech,Mechanical,8.47,Python,1,Structural Engineer
+B.Tech,Computer Science,7.75,CPA,0,Project Manager
+B.Tech,Mechanical,7.91,None,2,Project Manager
+B.Tech,Electronics,9.7,Python,3,Structural Engineer
+B.Tech,Information Technology,6.64,Python,3,VLSI Engineer
+B.Tech,Civil,8.96,None,1,AI Engineer
+B.Tech,Electronics,7.0,Java,2,Project Manager
+B.Tech,Information Technology,8.85,AWS,2,AI Engineer
+B.Tech,Information Technology,9.06,CPA,0,VLSI Engineer
+B.Tech,Civil,8.9,AWS,3,Structural Engineer
+B.Tech,Computer Science,6.03,Java,3,VLSI Engineer
+B.Tech,Information Technology,7.81,CPA,1,Structural Engineer
+B.Tech,Mechanical,9.89,Java,1,VLSI Engineer
+B.Tech,Computer Science,8.4,CPA,0,Structural Engineer
+B.Tech,Mechanical,8.86,AWS,0,Structural Engineer
+B.Tech,Civil,9.44,Java,2,Structural Engineer
+B.Tech,Electronics,7.11,AWS,3,Software Developer
+B.Tech,Civil,6.6,Python,1,Project Manager
+B.Tech,Electronics,7.36,AWS,3,Project Manager
+B.Tech,Computer Science,7.11,CPA,0,Structural Engineer
+B.Tech,Civil,9.86,Python,1,VLSI Engineer
+B.Tech,Information Technology,9.06,Python,2,Software Developer
+B.Tech,Computer Science,9.68,Python,1,VLSI Engineer
+B.Tech,Mechanical,8.09,AWS,3,Software Developer
+B.Tech,Mechanical,8.02,Python,1,Software Developer
+B.Tech,Mechanical,6.7,AWS,0,Project Manager
+B.Tech,Mechanical,6.41,Java,2,Structural Engineer
+B.Tech,Mechanical,7.05,AWS,1,AI Engineer
+B.Tech,Mechanical,8.21,None,3,Software Developer
+B.Tech,Electronics,8.33,Java,1,Structural Engineer
+B.Tech,Mechanical,9.84,CPA,0,VLSI Engineer
+B.Tech,Computer Science,9.8,None,0,Structural Engineer
+B.Tech,Computer Science,8.28,AWS,0,VLSI Engineer
+B.Tech,Information Technology,8.26,Java,2,AI Engineer
+B.Tech,Electronics,7.54,CPA,1,AI Engineer
+B.Tech,Electronics,9.1,None,2,VLSI Engineer
+B.Tech,Information Technology,6.87,Java,0,Structural Engineer
+B.Tech,Information Technology,6.0,AWS,0,Project Manager
+B.Tech,Civil,9.15,AWS,3,AI Engineer
+B.Tech,Civil,7.34,AWS,0,AI Engineer
+B.Tech,Information Technology,6.9,CPA,1,VLSI Engineer
+B.Tech,Information Technology,6.37,CPA,1,VLSI Engineer
+B.Tech,Mechanical,8.14,Python,3,Project Manager
+B.Tech,Civil,9.44,None,2,VLSI Engineer
+B.Tech,Mechanical,8.13,None,1,Project Manager
+B.Tech,Electronics,7.06,Python,1,Structural Engineer
+B.Tech,Civil,9.17,None,1,Structural Engineer
+B.Tech,Computer Science,7.69,AWS,0,Software Developer
+B.Tech,Mechanical,9.42,None,0,Project Manager
+B.Tech,Information Technology,6.68,AWS,2,Software Developer
+B.Tech,Electronics,8.81,CPA,3,AI Engineer
+B.Tech,Mechanical,6.33,Python,3,Structural Engineer
+B.Tech,Electronics,9.6,CPA,2,Software Developer
+B.Tech,Information Technology,7.35,Java,1,AI Engineer
+B.Tech,Information Technology,7.62,Java,3,Structural Engineer
+B.Tech,Information Technology,8.52,AWS,3,VLSI Engineer
+B.Tech,Mechanical,7.34,Java,1,Structural Engineer
+B.Tech,Mechanical,9.85,None,1,Project Manager
+B.Tech,Computer Science,8.01,Python,1,VLSI Engineer
+B.Tech,Information Technology,8.17,None,0,AI Engineer
+B.Tech,Information Technology,7.54,Java,1,AI Engineer
+B.Tech,Electronics,9.07,Java,0,AI Engineer
+B.Tech,Civil,8.97,Python,2,AI Engineer
+B.Tech,Electronics,8.81,None,3,AI Engineer
+B.Tech,Information Technology,8.11,Python,2,Project Manager
+B.Tech,Information Technology,7.76,None,1,VLSI Engineer
+B.Tech,Information Technology,9.21,CPA,2,Project Manager
+B.Tech,Mechanical,9.4,None,2,Project Manager
+B.Tech,Electronics,9.21,None,1,Software Developer
+B.Tech,Computer Science,9.15,None,2,AI Engineer
+B.Tech,Mechanical,7.04,Python,1,Structural Engineer
+B.Tech,Information Technology,9.67,None,0,AI Engineer
+B.Tech,Electronics,8.91,Java,2,AI Engineer
+B.Tech,Information Technology,7.99,AWS,2,VLSI Engineer
+B.Tech,Electronics,8.66,AWS,1,AI Engineer
+B.Tech,Computer Science,7.95,None,2,Software Developer
+B.Tech,Electronics,6.91,AWS,0,Project Manager
+B.Tech,Computer Science,8.21,None,3,AI Engineer
+B.Tech,Civil,7.48,CPA,3,Structural Engineer
+B.Tech,Information Technology,9.13,Java,1,Project Manager
+B.Tech,Mechanical,9.15,AWS,3,Software Developer
+B.Tech,Civil,6.55,None,2,AI Engineer
+B.Tech,Information Technology,7.98,AWS,0,VLSI Engineer
+B.Tech,Mechanical,9.21,CPA,0,Software Developer
+B.Tech,Mechanical,9.05,AWS,3,Structural Engineer
+B.Tech,Mechanical,7.97,None,1,VLSI Engineer
+B.Tech,Civil,7.22,AWS,1,VLSI Engineer
+B.Tech,Civil,9.27,Java,2,Structural Engineer
+B.Tech,Computer Science,9.49,AWS,2,Structural Engineer
+B.Tech,Electronics,7.72,Java,0,AI Engineer
+B.Tech,Computer Science,8.26,Java,0,Project Manager
+B.Tech,Mechanical,9.72,None,2,AI Engineer
+B.Tech,Electronics,9.15,AWS,1,Project Manager
+B.Tech,Electronics,6.43,AWS,3,Structural Engineer
+B.Tech,Information Technology,7.61,Python,2,VLSI Engineer
+B.Tech,Information Technology,9.52,AWS,1,Project Manager
+B.Tech,Mechanical,7.73,Java,2,AI Engineer
+B.Tech,Information Technology,8.57,CPA,1,Software Developer
+B.Tech,Mechanical,7.24,AWS,1,AI Engineer
+B.Tech,Civil,6.55,CPA,2,Project Manager
+B.Tech,Mechanical,8.31,CPA,0,AI Engineer
+B.Tech,Civil,9.29,CPA,2,AI Engineer
+B.Tech,Information Technology,7.48,AWS,3,VLSI Engineer
+B.Tech,Civil,8.89,AWS,0,AI Engineer
+B.Tech,Information Technology,7.02,None,3,VLSI Engineer
+B.Tech,Electronics,6.71,Java,0,AI Engineer
+B.Tech,Mechanical,6.42,AWS,0,AI Engineer
+B.Tech,Electronics,9.37,Python,1,Project Manager
+B.Com,Accounting,7.31,Python,0,Auditor
+B.Com,Accounting,7.99,AWS,0,Chartered Accountant
+B.Com,Finance,9.35,AWS,0,Chartered Accountant
+B.Com,Accounting,7.5,CPA,1,Tax Consultant
+B.Com,Accounting,8.39,Python,3,Tax Consultant
+B.Com,Taxation,8.5,AWS,3,Bank Officer
+B.Com,Taxation,9.15,Java,1,Financial Analyst
+B.Com,Accounting,7.73,CPA,0,Auditor
+B.Com,Banking,8.56,AWS,1,Financial Analyst
+B.Com,Banking,7.53,None,0,Auditor
+B.Com,Banking,6.79,Java,0,Chartered Accountant
+B.Com,Taxation,7.78,None,2,Bank Officer
+B.Com,Finance,9.53,Python,3,Financial Analyst
+B.Com,Finance,7.47,None,0,Financial Analyst
+B.Com,Taxation,7.84,None,1,Tax Consultant
+B.Com,Commerce,6.58,None,0,Financial Analyst
+B.Com,Accounting,8.17,Java,3,Bank Officer
+B.Com,Taxation,8.65,Python,0,Financial Analyst
+B.Com,Taxation,6.15,CPA,1,Tax Consultant
+B.Com,Taxation,7.67,None,1,Bank Officer
+B.Com,Taxation,6.36,None,1,Chartered Accountant
+B.Com,Taxation,6.49,Python,0,Auditor
+B.Com,Finance,9.26,None,3,Tax Consultant
+B.Com,Accounting,8.87,Python,2,Auditor
+B.Com,Taxation,9.69,AWS,3,Tax Consultant
+B.Com,Commerce,6.01,None,3,Financial Analyst
+B.Com,Accounting,8.91,CPA,3,Financial Analyst
+B.Com,Finance,8.12,CPA,2,Tax Consultant
+B.Com,Accounting,7.81,CPA,1,Bank Officer
+B.Com,Commerce,6.5,CPA,0,Tax Consultant
+B.Com,Banking,8.53,None,1,Auditor
+B.Com,Banking,6.45,AWS,0,Chartered Accountant
+B.Com,Taxation,7.86,Python,1,Auditor
+B.Com,Banking,8.34,Java,2,Bank Officer
+B.Com,Commerce,9.82,None,1,Chartered Accountant
+B.Com,Banking,8.67,Python,1,Tax Consultant
+B.Com,Finance,9.62,CPA,1,Tax Consultant
+B.Com,Finance,6.05,AWS,1,Tax Consultant
+B.Com,Banking,7.89,CPA,3,Bank Officer
+B.Com,Commerce,9.24,Java,1,Financial Analyst
+B.Com,Finance,9.08,None,3,Chartered Accountant
+B.Com,Accounting,9.15,AWS,1,Chartered Accountant
+B.Com,Finance,8.18,Java,3,Financial Analyst
+B.Com,Finance,9.39,Python,1,Auditor
+B.Com,Commerce,9.78,CPA,3,Chartered Accountant
+B.Com,Commerce,9.46,CPA,3,Financial Analyst
+B.Com,Finance,8.92,Java,1,Financial Analyst
+B.Com,Finance,9.16,Java,2,Chartered Accountant
+B.Com,Commerce,8.39,Python,3,Bank Officer
+B.Com,Accounting,9.27,CPA,1,Tax Consultant
+B.Com,Commerce,6.75,AWS,0,Chartered Accountant
+B.Com,Finance,6.38,None,0,Auditor
+B.Com,Taxation,8.24,Java,1,Bank Officer
+B.Com,Taxation,7.52,None,3,Financial Analyst
+B.Com,Banking,9.37,CPA,1,Tax Consultant
+B.Com,Finance,9.68,Python,0,Tax Consultant
+B.Com,Commerce,7.04,Python,0,Tax Consultant
+B.Com,Banking,7.47,CPA,2,Tax Consultant
+B.Com,Taxation,8.67,Python,2,Financial Analyst
+B.Com,Accounting,8.64,Python,3,Auditor
+B.Com,Taxation,9.25,None,0,Bank Officer
+B.Com,Banking,7.9,CPA,3,Tax Consultant
+B.Com,Accounting,8.04,AWS,3,Financial Analyst
+B.Com,Finance,9.19,Python,2,Tax Consultant
+B.Com,Accounting,7.13,AWS,3,Auditor
+B.Com,Taxation,7.59,CPA,1,Financial Analyst
+B.Com,Finance,6.12,Java,0,Tax Consultant
+B.Com,Finance,9.4,Python,0,Tax Consultant
+B.Com,Commerce,9.57,None,1,Tax Consultant
+B.Com,Accounting,8.1,Java,2,Tax Consultant
+B.Com,Banking,6.01,Java,3,Tax Consultant
+B.Com,Banking,7.96,CPA,3,Tax Consultant
+B.Com,Banking,7.87,None,1,Bank Officer
+B.Com,Accounting,9.07,None,2,Financial Analyst
+B.Com,Banking,6.24,Python,0,Auditor
+B.Com,Accounting,9.61,CPA,3,Tax Consultant
+B.Com,Commerce,9.73,None,3,Chartered Accountant
+B.Com,Commerce,9.89,Java,2,Chartered Accountant
+B.Com,Accounting,8.07,Python,0,Auditor
+B.Com,Commerce,7.84,CPA,1,Auditor
+B.Com,Banking,9.37,CPA,2,Chartered Accountant
+B.Com,Commerce,6.19,CPA,2,Financial Analyst
+B.Com,Taxation,7.25,Python,2,Tax Consultant
+B.Com,Accounting,9.86,None,3,Auditor
+B.Com,Finance,7.25,Python,3,Bank Officer
+B.Com,Banking,8.7,None,0,Financial Analyst
+B.Com,Commerce,7.7,Python,1,Financial Analyst
+B.Com,Banking,6.44,CPA,3,Financial Analyst
+B.Com,Finance,8.44,None,3,Chartered Accountant
+B.Com,Finance,8.26,AWS,3,Chartered Accountant
+B.Com,Commerce,7.91,AWS,3,Tax Consultant
+B.Com,Accounting,7.29,None,0,Chartered Accountant
+B.Com,Finance,6.58,None,1,Auditor
+B.Com,Accounting,8.42,CPA,2,Auditor
+B.Com,Finance,8.29,AWS,2,Chartered Accountant
+B.Com,Finance,6.26,Python,0,Bank Officer
+B.Com,Accounting,6.36,Java,1,Financial Analyst
+B.Com,Finance,8.39,Python,1,Auditor
+B.Com,Finance,9.1,AWS,0,Chartered Accountant
+B.Com,Accounting,6.58,AWS,0,Auditor
+B.Com,Accounting,6.45,None,2,Chartered Accountant
+B.Com,Taxation,9.71,CPA,3,Chartered Accountant
+B.Com,Commerce,8.7,AWS,0,Tax Consultant
+B.Com,Banking,6.71,Python,2,Tax Consultant
+B.Com,Accounting,7.1,CPA,2,Bank Officer
+B.Com,Commerce,6.66,Python,3,Auditor
+B.Com,Banking,9.0,Python,2,Chartered Accountant
+B.Com,Banking,6.96,AWS,2,Auditor
+B.Com,Accounting,7.57,Java,0,Tax Consultant
+B.Com,Accounting,6.13,CPA,3,Tax Consultant
+B.Com,Accounting,9.0,Python,0,Auditor
+B.Com,Accounting,8.72,AWS,3,Bank Officer
+B.Com,Commerce,9.49,Java,3,Auditor
+B.Com,Banking,8.38,Python,3,Financial Analyst
+B.Com,Taxation,6.43,Java,1,Chartered Accountant
+B.Com,Accounting,9.5,None,0,Financial Analyst
+B.Com,Finance,8.74,CPA,2,Tax Consultant
+B.Com,Accounting,7.44,Java,0,Chartered Accountant
+B.Com,Commerce,6.38,Python,0,Financial Analyst
+B.Com,Taxation,8.27,CPA,0,Financial Analyst
+B.Com,Banking,6.44,CPA,2,Auditor
+B.Com,Accounting,9.56,Python,3,Tax Consultant
+B.Com,Banking,9.75,CPA,2,Chartered Accountant
+B.Com,Commerce,9.68,None,1,Tax Consultant
+B.Com,Accounting,6.65,AWS,1,Bank Officer
+B.Com,Commerce,7.71,None,1,Financial Analyst
+B.Com,Commerce,6.5,CPA,0,Tax Consultant
+B.Com,Commerce,6.49,CPA,2,Chartered Accountant
+B.Com,Commerce,9.59,None,0,Chartered Accountant
+B.Com,Commerce,6.26,Java,3,Chartered Accountant
+B.Com,Finance,9.05,CPA,0,Chartered Accountant
+B.Com,Finance,8.15,CPA,0,Financial Analyst
+B.Com,Finance,9.0,Java,3,Auditor
+B.Com,Banking,7.09,Python,0,Chartered Accountant
+B.Com,Accounting,6.7,Python,1,Bank Officer
+B.Com,Finance,9.47,None,3,Tax Consultant
+B.Com,Taxation,8.8,Python,2,Bank Officer
+B.Com,Banking,7.79,CPA,2,Tax Consultant
+B.Com,Taxation,9.23,CPA,3,Auditor
+B.Com,Taxation,8.27,Python,0,Financial Analyst
+B.Com,Finance,6.35,AWS,2,Financial Analyst
+B.Com,Commerce,8.0,None,1,Bank Officer
+B.Com,Commerce,8.99,Python,0,Chartered Accountant
+B.Com,Finance,9.86,Java,0,Tax Consultant
+B.Com,Commerce,7.31,Java,0,Tax Consultant
+B.Com,Commerce,8.79,CPA,1,Financial Analyst
+B.Com,Accounting,8.37,None,3,Chartered Accountant
+B.Com,Commerce,9.78,None,2,Chartered Accountant
+B.Com,Commerce,8.75,AWS,2,Financial Analyst
+B.Com,Accounting,8.59,None,2,Tax Consultant
+B.Sc,Chemistry,9.63,CPA,2,Researcher
+B.Sc,Biotechnology,6.44,AWS,1,Lab Technician
+B.Sc,Chemistry,7.76,None,0,Teacher
+B.Sc,Physics,7.23,None,2,Researcher
+B.Sc,Data Science,9.39,Python,3,Software Developer
+B.Sc,Chemistry,9.71,AWS,0,Teacher
+B.Sc,Chemistry,9.55,Java,3,Researcher
+B.Sc,Mathematics,7.62,CPA,3,Researcher
+B.Sc,Chemistry,9.05,CPA,1,Lab Technician
+B.Sc,Biotechnology,6.62,None,1,Researcher
+B.Sc,Mathematics,8.43,Java,0,Teacher
+B.Sc,Mathematics,7.39,AWS,3,Teacher
+B.Sc,Physics,9.06,Python,2,Data Analyst
+B.Sc,Physics,7.61,AWS,1,Researcher
+B.Sc,Data Science,9.62,Java,0,Data Analyst
+B.Sc,Physics,9.07,CPA,1,Data Analyst
+B.Sc,Data Science,6.36,Java,3,Lab Technician
+B.Sc,Mathematics,8.49,Python,0,Lab Technician
+B.Sc,Biotechnology,7.22,AWS,3,Teacher
+B.Sc,Chemistry,7.56,CPA,2,Data Analyst
+B.Sc,Chemistry,8.88,Java,2,Teacher
+B.Sc,Physics,6.44,None,3,Data Analyst
+B.Sc,Mathematics,8.42,CPA,1,Software Developer
+B.Sc,Physics,7.84,AWS,2,Software Developer
+B.Sc,Data Science,9.87,None,3,Researcher
+B.Sc,Data Science,7.18,Python,1,Researcher
+B.Sc,Chemistry,7.04,Java,0,Software Developer
+B.Sc,Biotechnology,6.76,Java,0,Lab Technician
+B.Sc,Mathematics,9.36,None,3,Lab Technician
+B.Sc,Mathematics,9.45,CPA,2,Data Analyst
+B.Sc,Biotechnology,6.6,Java,1,Data Analyst
+B.Sc,Data Science,7.15,Python,2,Researcher
+B.Sc,Physics,6.31,CPA,1,Data Analyst
+B.Sc,Mathematics,7.63,Java,1,Software Developer
+B.Sc,Data Science,8.87,Java,3,Teacher
+B.Sc,Data Science,8.34,AWS,0,Data Analyst
+B.Sc,Data Science,9.89,CPA,3,Software Developer
+B.Sc,Chemistry,9.32,CPA,0,Researcher
+B.Sc,Chemistry,9.47,CPA,3,Data Analyst
+B.Sc,Physics,9.56,None,0,Teacher
+B.Sc,Data Science,6.52,Java,3,Researcher
+B.Sc,Mathematics,6.01,CPA,3,Data Analyst
+B.Sc,Mathematics,6.16,Java,2,Data Analyst
+B.Sc,Data Science,6.15,Java,1,Lab Technician
+B.Sc,Chemistry,8.65,AWS,2,Data Analyst
+B.Sc,Mathematics,9.14,CPA,1,Data Analyst
+B.Sc,Biotechnology,6.52,None,2,Software Developer
+B.Sc,Data Science,7.08,Python,1,Teacher
+B.Sc,Chemistry,7.16,None,3,Researcher
+B.Sc,Biotechnology,8.76,None,3,Researcher
+B.Sc,Data Science,6.64,Python,3,Software Developer
+B.Sc,Chemistry,9.83,CPA,2,Data Analyst
+B.Sc,Chemistry,8.18,None,1,Software Developer
+B.Sc,Mathematics,8.82,Java,3,Data Analyst
+B.Sc,Physics,8.25,AWS,2,Teacher
+B.Sc,Chemistry,6.47,AWS,2,Data Analyst
+B.Sc,Physics,6.86,Python,0,Teacher
+B.Sc,Chemistry,8.94,CPA,1,Software Developer
+B.Sc,Mathematics,8.94,CPA,1,Researcher
+B.Sc,Mathematics,7.56,Java,3,Researcher
+B.Sc,Physics,9.09,Java,3,Teacher
+B.Sc,Data Science,7.71,AWS,0,Data Analyst
+B.Sc,Chemistry,7.91,None,3,Researcher
+B.Sc,Chemistry,6.93,Python,1,Researcher
+B.Sc,Mathematics,8.94,AWS,3,Lab Technician
+B.Sc,Biotechnology,8.76,Java,1,Software Developer
+B.Sc,Data Science,6.71,Python,1,Lab Technician
+B.Sc,Mathematics,8.85,CPA,1,Software Developer
+B.Sc,Mathematics,7.91,Java,1,Researcher
+B.Sc,Data Science,7.75,None,1,Data Analyst
+B.Sc,Mathematics,7.53,None,0,Data Analyst
+B.Sc,Biotechnology,6.95,Python,3,Researcher
+B.Sc,Mathematics,6.91,None,3,Teacher
+B.Sc,Chemistry,9.25,None,3,Researcher
+B.Sc,Physics,6.89,AWS,2,Researcher
+B.Sc,Mathematics,6.04,Java,2,Software Developer
+B.Sc,Biotechnology,8.03,Java,2,Software Developer
+B.Sc,Chemistry,9.61,CPA,3,Software Developer
+B.Sc,Biotechnology,9.55,Java,3,Lab Technician
+B.Sc,Biotechnology,7.15,None,1,Data Analyst
+B.Sc,Mathematics,6.06,CPA,1,Software Developer
+B.Sc,Data Science,7.14,Java,3,Data Analyst
+B.Sc,Biotechnology,6.75,None,2,Researcher
+B.Sc,Chemistry,7.57,AWS,2,Researcher
+B.Sc,Data Science,6.79,CPA,2,Researcher
+B.Sc,Data Science,8.74,Java,0,Researcher
+B.Sc,Biotechnology,7.82,AWS,1,Lab Technician
+B.Sc,Physics,7.75,CPA,2,Lab Technician
+B.Sc,Mathematics,9.6,None,0,Lab Technician
+B.Sc,Biotechnology,7.2,AWS,0,Teacher
+B.Sc,Mathematics,8.03,None,0,Teacher
+B.Sc,Physics,9.12,None,0,Data Analyst
+B.Sc,Chemistry,9.16,Java,3,Data Analyst
+B.Sc,Chemistry,7.05,CPA,1,Data Analyst
+B.Sc,Physics,6.94,Python,1,Lab Technician
+B.Sc,Data Science,6.25,Java,3,Lab Technician
+B.Sc,Mathematics,8.08,None,2,Software Developer
+B.Sc,Mathematics,9.69,Java,0,Software Developer
+B.Sc,Mathematics,6.85,None,0,Researcher
+B.Sc,Chemistry,6.38,Python,2,Software Developer
+B.Sc,Mathematics,8.25,Java,2,Software Developer
+B.Sc,Chemistry,8.07,None,3,Teacher
+B.Sc,Chemistry,8.03,Java,0,Researcher
+B.Sc,Chemistry,7.04,AWS,0,Teacher
+B.Sc,Biotechnology,6.05,CPA,3,Lab Technician
+B.Sc,Data Science,8.43,Java,0,Software Developer
+B.Sc,Mathematics,8.35,Java,1,Lab Technician
+B.Sc,Mathematics,7.89,CPA,2,Data Analyst
+B.Sc,Biotechnology,8.1,None,2,Teacher
+B.Sc,Biotechnology,8.62,Python,0,Data Analyst
+B.Sc,Biotechnology,7.96,Python,2,Data Analyst
+B.Sc,Physics,6.32,None,3,Lab Technician
+B.Sc,Biotechnology,6.35,None,0,Data Analyst
+B.Sc,Physics,8.48,Python,1,Teacher
+B.Sc,Physics,6.42,CPA,3,Lab Technician
+B.Sc,Physics,6.83,None,2,Lab Technician
+B.Sc,Chemistry,9.12,Java,0,Lab Technician
+B.Sc,Data Science,9.48,CPA,2,Researcher
+B.Sc,Chemistry,6.92,AWS,2,Lab Technician
+B.Sc,Biotechnology,8.11,CPA,3,Teacher
+B.Sc,Biotechnology,7.95,AWS,2,Researcher
+B.Sc,Data Science,7.24,Java,1,Teacher
+B.Sc,Mathematics,8.54,Java,2,Researcher
+B.Sc,Data Science,6.64,Python,3,Lab Technician
+B.Sc,Mathematics,9.82,Java,1,Software Developer
+B.Sc,Mathematics,7.18,AWS,1,Lab Technician
+B.Sc,Biotechnology,9.09,CPA,3,Researcher
+B.Sc,Physics,8.99,CPA,1,Lab Technician
+B.Sc,Data Science,9.08,None,1,Teacher
+B.Sc,Data Science,7.5,None,2,Researcher
+B.Sc,Biotechnology,9.06,Java,3,Lab Technician
+B.Sc,Physics,6.07,CPA,3,Teacher
+B.Sc,Chemistry,9.23,Java,1,Data Analyst
+B.Sc,Chemistry,9.49,Python,3,Software Developer
+B.Sc,Mathematics,8.51,Java,1,Researcher
+B.Sc,Data Science,6.02,Python,2,Software Developer
+B.Sc,Data Science,6.52,Python,3,Data Analyst
+B.Sc,Mathematics,7.21,None,3,Lab Technician
+B.Sc,Mathematics,6.58,AWS,0,Data Analyst
+B.Sc,Data Science,6.77,None,2,Software Developer
+B.Sc,Data Science,8.05,AWS,0,Data Analyst
+B.Sc,Chemistry,7.25,Java,1,Researcher
+B.Sc,Chemistry,9.37,None,3,Software Developer
+B.Sc,Data Science,7.29,AWS,0,Data Analyst
+B.Sc,Mathematics,6.79,CPA,3,Lab Technician
+B.Sc,Chemistry,8.56,Java,3,Lab Technician
+B.Sc,Data Science,9.18,Java,3,Teacher
+B.Sc,Data Science,9.13,None,2,Software Developer
+B.Sc,Data Science,7.06,Java,1,Lab Technician
+B.Sc,Data Science,7.81,AWS,0,Lab Technician
+B.A,English,7.44,None,1,Social Worker
+B.A,Economics,8.79,CPA,3,Content Writer
+B.A,Psychology,7.51,AWS,0,HR Manager
+B.A,History,9.23,AWS,1,Policy Analyst
+B.A,English,8.19,AWS,2,Journalist
+B.A,English,9.04,Python,0,Content Writer
+B.A,Journalism,7.52,None,1,Policy Analyst
+B.A,Psychology,6.03,CPA,1,Journalist
+B.A,Psychology,9.14,None,2,Journalist
+B.A,Journalism,6.38,AWS,2,Journalist
+B.A,History,6.04,CPA,1,Policy Analyst
+B.A,English,8.85,Java,3,Content Writer
+B.A,Journalism,8.6,None,0,Policy Analyst
+B.A,English,8.99,CPA,0,Journalist
+B.A,Economics,6.9,Java,0,Content Writer
+B.A,Economics,8.3,CPA,1,Journalist
+B.A,English,8.28,None,2,Policy Analyst
+B.A,English,8.37,Python,3,Policy Analyst
+B.A,English,6.25,Java,2,Journalist
+B.A,Journalism,8.23,Python,1,HR Manager
+B.A,Psychology,8.32,Java,1,HR Manager
+B.A,Psychology,7.89,AWS,0,Content Writer
+B.A,Journalism,9.35,AWS,2,Journalist
+B.A,English,8.45,Java,1,Journalist
+B.A,Journalism,9.89,None,1,HR Manager
+B.A,Journalism,7.59,AWS,3,HR Manager
+B.A,History,8.02,None,3,Social Worker
+B.A,English,7.32,CPA,1,Journalist
+B.A,History,9.31,AWS,3,HR Manager
+B.A,Economics,9.8,Java,1,Journalist
+B.A,English,7.98,Java,0,Content Writer
+B.A,Psychology,6.48,Java,2,Journalist
+B.A,Journalism,9.69,CPA,0,Social Worker
+B.A,Journalism,6.62,None,1,Content Writer
+B.A,Journalism,6.38,CPA,3,HR Manager
+B.A,History,6.58,Python,3,Policy Analyst
+B.A,Journalism,6.93,AWS,0,HR Manager
+B.A,Journalism,8.02,None,0,Social Worker
+B.A,History,9.22,Python,0,HR Manager
+B.A,English,9.86,None,3,HR Manager
+B.A,Psychology,7.72,AWS,0,Content Writer
+B.A,Journalism,6.73,AWS,0,Social Worker
+B.A,History,7.03,Python,3,HR Manager
+B.A,English,8.16,Python,1,HR Manager
+B.A,Economics,6.25,AWS,2,HR Manager
+B.A,Psychology,7.68,Python,1,Content Writer
+B.A,Journalism,7.0,None,3,HR Manager
+B.A,Journalism,7.03,AWS,2,HR Manager
+B.A,History,7.49,None,3,Journalist
+B.A,Journalism,8.93,AWS,1,HR Manager
+B.A,History,8.25,CPA,1,HR Manager
+B.A,English,6.73,AWS,2,HR Manager
+B.A,English,7.73,Python,3,Journalist
+B.A,Psychology,6.13,Java,0,Policy Analyst
+B.A,Economics,7.98,CPA,1,Journalist
+B.A,English,6.2,None,1,Journalist
+B.A,Economics,9.37,Python,0,Journalist
+B.A,English,8.63,None,3,Journalist
+B.A,English,8.75,Java,1,Policy Analyst
+B.A,History,6.29,Java,3,Social Worker
+B.A,English,8.36,Java,1,Policy Analyst
+B.A,Economics,8.29,AWS,2,Social Worker
+B.A,History,9.57,None,3,Social Worker
+B.A,Journalism,7.57,CPA,0,Social Worker
+B.A,English,8.23,AWS,3,Policy Analyst
+B.A,Psychology,7.15,CPA,0,Journalist
+B.A,Economics,7.08,None,0,Social Worker
+B.A,Journalism,7.43,CPA,0,Policy Analyst
+B.A,Economics,8.88,CPA,2,Social Worker
+B.A,Psychology,6.21,Java,0,Policy Analyst
+B.A,History,7.24,CPA,1,Social Worker
+B.A,Psychology,8.94,CPA,0,Social Worker
+B.A,History,9.71,AWS,3,Content Writer
+B.A,History,7.78,AWS,1,Content Writer
+B.A,History,8.43,Java,2,HR Manager
+B.A,Journalism,6.4,AWS,2,HR Manager
+B.A,English,9.48,Python,0,HR Manager
+B.A,History,8.24,None,0,Content Writer
+B.A,Journalism,6.79,AWS,1,Policy Analyst
+B.A,Economics,8.6,None,3,Journalist
+B.A,Journalism,8.45,CPA,3,HR Manager
+B.A,English,6.44,Java,0,Social Worker
+B.A,Economics,7.93,CPA,3,Policy Analyst
+B.A,Psychology,8.83,CPA,1,HR Manager
+B.A,Psychology,9.53,Java,3,Policy Analyst
+B.A,English,7.91,Python,2,HR Manager
+B.A,Journalism,7.63,Java,2,Policy Analyst
+B.A,English,9.85,Java,3,Social Worker
+B.A,History,9.18,AWS,2,Policy Analyst
+B.A,History,7.92,None,3,Content Writer
+B.A,Psychology,8.43,None,2,Content Writer
+B.A,History,9.05,None,1,Policy Analyst
+B.A,History,7.31,None,2,Policy Analyst
+B.A,English,9.36,AWS,2,Content Writer
+B.A,Economics,9.2,Python,1,Social Worker
+B.A,Journalism,7.29,AWS,1,Journalist
+B.A,English,9.57,None,0,Journalist
+B.A,Economics,8.57,CPA,0,HR Manager
+B.A,Journalism,7.16,Java,3,Social Worker
+B.A,Journalism,6.39,CPA,3,Policy Analyst
+B.A,Psychology,9.64,CPA,2,HR Manager
+B.A,Psychology,9.85,Java,2,Social Worker
+B.A,History,6.32,Java,2,Content Writer
+B.A,Journalism,6.38,CPA,3,Journalist
+B.A,English,9.37,AWS,1,Journalist
+B.A,Journalism,8.71,Python,3,Content Writer
+B.A,Economics,7.18,None,3,Social Worker
+B.A,English,8.33,Python,1,Social Worker
+B.A,Psychology,9.38,AWS,1,Journalist
+B.A,Economics,6.59,CPA,3,Social Worker
+B.A,Economics,8.92,None,0,Policy Analyst
+B.A,Journalism,7.01,Python,1,Policy Analyst
+B.A,Economics,6.75,CPA,1,Social Worker
+B.A,Economics,9.37,None,0,Policy Analyst
+B.A,Journalism,8.97,AWS,1,Content Writer
+B.A,English,8.69,None,0,Journalist
+B.A,Psychology,7.07,AWS,0,HR Manager
+B.A,Economics,7.72,Python,3,Policy Analyst
+B.A,Psychology,6.82,AWS,0,Policy Analyst
+B.A,Journalism,6.21,AWS,2,Policy Analyst
+B.A,Psychology,6.65,Python,1,Content Writer
+B.A,Journalism,9.43,None,3,Social Worker
+B.A,Economics,8.03,CPA,3,Policy Analyst
+B.A,History,7.01,Python,1,HR Manager
+B.A,Economics,6.89,CPA,1,HR Manager
+B.A,English,9.1,Python,0,HR Manager
+B.A,Psychology,7.6,Python,3,Policy Analyst
+B.A,Psychology,6.01,AWS,1,Social Worker
+B.A,Economics,7.79,Python,1,Social Worker
+B.A,History,8.94,None,0,Journalist
+B.A,Psychology,9.14,CPA,2,Content Writer
+B.A,Psychology,6.75,CPA,3,HR Manager
+B.A,Economics,7.9,Java,1,Social Worker
+B.A,History,6.49,None,1,Social Worker
+B.A,History,9.46,Python,3,Policy Analyst
+B.A,Economics,7.11,CPA,0,Content Writer
+B.A,Economics,8.47,Java,1,HR Manager
+B.A,English,6.56,None,1,HR Manager
+B.A,Journalism,7.84,AWS,0,Journalist
+B.A,English,6.2,Java,1,Content Writer
+B.A,English,8.27,None,3,Content Writer
+B.A,Economics,6.16,Python,2,Content Writer
+B.A,Economics,6.14,Java,2,Journalist
+B.A,Journalism,6.96,CPA,1,Journalist
+B.A,History,6.76,Java,0,Content Writer
+B.A,History,7.02,CPA,0,Content Writer
+B.A,History,7.21,CPA,0,Policy Analyst
+B.A,Journalism,6.06,Python,0,Social Worker
+B.A,English,7.07,CPA,2,HR Manager
+B.A,Journalism,8.45,Python,3,Policy Analyst
+BBA,International Business,7.57,None,0,Operations Manager
+BBA,HR,7.12,Java,2,Business Analyst
+BBA,Operations,6.72,None,3,Operations Manager
+BBA,International Business,7.98,Python,2,Business Analyst
+BBA,Operations,8.06,None,3,Marketing Executive
+BBA,Marketing,8.48,CPA,3,HR Generalist
+BBA,International Business,9.84,None,3,HR Generalist
+BBA,International Business,9.01,None,0,HR Generalist
+BBA,International Business,8.41,Java,0,Marketing Executive
+BBA,Marketing,9.31,AWS,0,Operations Manager
+BBA,HR,8.25,None,3,Operations Manager
+BBA,Marketing,9.58,None,2,Business Analyst
+BBA,HR,7.44,Python,3,Business Analyst
+BBA,Operations,8.75,AWS,3,Business Analyst
+BBA,HR,9.71,Java,2,Business Analyst
+BBA,HR,9.5,Python,1,Business Analyst
+BBA,International Business,9.22,CPA,0,Operations Manager
+BBA,Operations,8.95,AWS,2,Marketing Executive
+BBA,Marketing,7.08,Python,1,Business Analyst
+BBA,International Business,7.44,None,0,Marketing Executive
+BBA,HR,6.56,Java,0,Business Analyst
+BBA,HR,7.8,Java,1,Marketing Executive
+BBA,International Business,7.9,Java,1,Business Analyst
+BBA,Marketing,6.33,Python,1,Business Analyst
+BBA,International Business,9.72,CPA,2,Business Analyst
+BBA,Operations,7.53,None,0,Marketing Executive
+BBA,HR,8.69,Java,2,HR Generalist
+BBA,Operations,7.97,Java,2,Operations Manager
+BBA,HR,9.87,None,1,Business Analyst
+BBA,International Business,6.7,Java,0,Marketing Executive
+BBA,International Business,9.21,AWS,2,Marketing Executive
+BBA,Marketing,6.0,Python,1,Operations Manager
+BBA,Operations,8.0,AWS,1,Marketing Executive
+BBA,Marketing,8.38,AWS,1,Business Analyst
+BBA,Operations,9.65,CPA,0,Operations Manager
+BBA,HR,7.83,AWS,2,Business Analyst
+BBA,HR,7.44,AWS,1,HR Generalist
+BBA,Marketing,6.57,CPA,1,HR Generalist
+BBA,International Business,8.78,Python,3,Marketing Executive
+BBA,Marketing,8.53,CPA,3,Marketing Executive
+BBA,Operations,9.32,Java,1,Operations Manager
+BBA,HR,7.94,Python,0,Marketing Executive
+BBA,Marketing,8.78,Java,2,Operations Manager
+BBA,International Business,8.37,CPA,0,Operations Manager
+BBA,Marketing,9.66,Java,2,Operations Manager
+BBA,Marketing,9.06,CPA,2,Business Analyst
+BBA,International Business,8.68,CPA,1,HR Generalist
+BBA,International Business,6.07,None,0,Business Analyst
+BBA,International Business,8.56,Java,1,HR Generalist
+BBA,HR,8.42,Python,2,Operations Manager
+BBA,International Business,6.39,AWS,2,Business Analyst
+BBA,International Business,8.72,CPA,2,Business Analyst
+BBA,HR,6.85,Java,1,Operations Manager
+BBA,HR,7.99,Java,0,Business Analyst
+BBA,Operations,6.06,Java,1,Marketing Executive
+BBA,Operations,7.92,Java,0,Business Analyst
+BBA,International Business,8.5,Python,3,Business Analyst
+BBA,International Business,6.81,Java,2,Operations Manager
+BBA,International Business,7.16,CPA,1,Business Analyst
+BBA,Operations,9.28,CPA,2,Marketing Executive
+BBA,International Business,7.97,Java,2,Marketing Executive
+BBA,Marketing,7.56,Python,3,Operations Manager
+BBA,International Business,6.61,Java,2,Operations Manager
+BBA,Marketing,9.76,Java,2,Operations Manager
+BBA,International Business,9.8,CPA,1,Business Analyst
+BBA,Marketing,8.44,AWS,3,Marketing Executive
+BBA,Marketing,6.54,Python,3,Marketing Executive
+BBA,International Business,7.17,CPA,2,Business Analyst
+BBA,HR,9.55,Java,3,HR Generalist
+BBA,International Business,9.82,CPA,1,Operations Manager
+BBA,Marketing,7.95,Python,0,Business Analyst
+BBA,HR,7.78,Python,0,Business Analyst
+BBA,International Business,6.65,Python,1,Marketing Executive
+BBA,Marketing,7.86,CPA,3,HR Generalist
+BBA,Marketing,6.39,AWS,1,Operations Manager
+BBA,Operations,7.34,Python,1,HR Generalist
+BBA,HR,7.03,CPA,3,Marketing Executive
+BBA,Marketing,7.5,Python,0,Marketing Executive
+BBA,Marketing,9.71,None,2,Business Analyst
+BBA,HR,6.38,CPA,0,Marketing Executive
+BBA,HR,8.92,CPA,2,HR Generalist
+BBA,Operations,7.01,None,1,HR Generalist
+BBA,HR,6.84,AWS,2,Marketing Executive
+BBA,International Business,6.32,AWS,1,Marketing Executive
+BBA,International Business,7.4,Java,2,HR Generalist
+BBA,Marketing,6.05,None,3,Business Analyst
+BBA,HR,7.98,CPA,3,Business Analyst
+BBA,Operations,9.64,AWS,0,Operations Manager
+BBA,HR,8.23,AWS,3,HR Generalist
+BBA,HR,9.3,None,1,Marketing Executive
+BBA,HR,6.27,AWS,2,HR Generalist
+BBA,Operations,8.64,Java,3,Operations Manager
+BBA,HR,7.34,CPA,0,HR Generalist
+BBA,Marketing,6.55,AWS,1,Marketing Executive
+BBA,HR,7.44,Python,0,HR Generalist
+BBA,HR,7.67,CPA,3,Business Analyst
+BBA,Operations,9.17,None,0,Business Analyst
+BBA,International Business,9.46,Python,3,Marketing Executive
+BBA,Operations,8.42,None,2,HR Generalist
+BBA,Operations,8.54,Java,1,HR Generalist
+BBA,HR,9.64,CPA,2,Business Analyst
+BBA,Operations,8.71,None,3,Operations Manager
+BBA,HR,7.58,CPA,0,Operations Manager
+BBA,International Business,7.48,Java,1,Marketing Executive
+BBA,International Business,9.47,Java,1,HR Generalist
+BBA,Operations,6.84,Java,2,Marketing Executive
+BBA,HR,6.32,CPA,0,HR Generalist
+BBA,Marketing,6.14,Java,3,Business Analyst
+BBA,Operations,8.13,CPA,3,HR Generalist
+BBA,Marketing,7.91,None,1,Operations Manager
+BBA,International Business,7.61,CPA,1,Business Analyst
+BBA,Marketing,6.85,CPA,2,Business Analyst
+BBA,Marketing,9.53,CPA,3,HR Generalist
+BBA,International Business,8.0,Java,3,HR Generalist
+BBA,International Business,9.88,CPA,2,Marketing Executive
+BBA,International Business,8.84,None,2,Marketing Executive
+BBA,Marketing,7.62,CPA,3,Operations Manager
+BBA,Marketing,9.58,CPA,2,HR Generalist
+BBA,Operations,8.87,Python,2,Operations Manager
+BBA,International Business,8.19,CPA,3,Business Analyst
+BBA,Marketing,9.5,None,2,Operations Manager
+BBA,HR,8.87,AWS,2,Business Analyst
+BBA,Marketing,8.24,CPA,0,Operations Manager
+BBA,Operations,6.47,AWS,0,Marketing Executive
+BBA,International Business,8.09,CPA,3,Business Analyst
+BBA,International Business,8.23,CPA,1,HR Generalist
+BBA,Marketing,7.97,Java,3,Operations Manager
+BBA,International Business,6.59,AWS,1,HR Generalist
+BBA,HR,7.23,Python,3,Operations Manager
+BBA,International Business,6.2,None,2,Operations Manager
+BBA,HR,8.94,None,2,Operations Manager
+BBA,International Business,6.67,Java,3,Marketing Executive
+BBA,Operations,6.84,None,0,Marketing Executive
+BBA,Operations,6.05,Python,1,Business Analyst
+BBA,International Business,8.25,Python,3,Operations Manager
+BBA,International Business,6.25,AWS,2,Business Analyst
+BBA,HR,9.48,Java,2,Marketing Executive
+BBA,Marketing,8.28,None,0,Operations Manager
+BBA,Operations,8.03,AWS,2,HR Generalist
+BBA,HR,8.78,CPA,0,HR Generalist
+BBA,HR,7.16,Java,2,Marketing Executive
+BBA,Marketing,7.77,CPA,0,Operations Manager
+BBA,HR,6.82,Java,2,Marketing Executive
+BBA,Operations,7.08,Python,1,Marketing Executive
+BBA,HR,7.2,Java,1,Operations Manager
+BBA,Marketing,6.7,Python,3,Operations Manager
+BBA,Marketing,8.39,AWS,0,HR Generalist
+BBA,International Business,7.9,Java,3,Marketing Executive
+BBA,International Business,6.74,AWS,1,Marketing Executive
+BBA,HR,6.98,Python,2,Marketing Executive

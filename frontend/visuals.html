@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Edu2Job | Analytics & Insights</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+    /* --- RESET & VARIABLES --- */
+    :root {
+        --primary: #4b0ea5;
+        --secondary: #7b2cbf;
+        --accent: #e0aaff;
+        --bg: #f3eaff;
+        --white: #ffffff;
+        --text-dark: #333;
+        --shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Poppins", sans-serif; background: var(--bg); display: flex; height: 100vh; overflow: hidden; }
+
+    /* --- SIDEBAR --- */
+    .sidebar { 
+        width: 260px; 
+        background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%); 
+        color: white; 
+        padding: 30px 20px; 
+        display: flex; 
+        flex-direction: column; 
+        flex-shrink: 0; 
+        box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+    }
+    .sidebar h1 { font-size: 28px; font-weight: 700; margin-bottom: 40px; text-align: center; letter-spacing: 1px; }
+    .sidebar h1 i { margin-right: 10px; }
+    
+    .menu-btn { 
+        padding: 14px 18px; 
+        border-radius: 12px; 
+        margin-bottom: 12px; 
+        font-size: 15px; 
+        cursor: pointer; 
+        transition: all 0.3s ease; 
+        display: flex; 
+        align-items: center; 
+        gap: 12px;
+        opacity: 0.8;
+    }
+    .menu-btn:hover { background: rgba(255,255,255,0.2); opacity: 1; transform: translateX(5px); }
+    .menu-btn.active { background: white; color: var(--primary); font-weight: 600; opacity: 1; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    
+    .logout { margin-top: auto; background: rgba(0,0,0,0.2); }
+    .logout:hover { background: #ff4757; }
+
+    /* --- MAIN AREA --- */
+    .main { flex: 1; padding: 30px 40px; overflow-y: auto; display: flex; flex-direction: column; }
+    
+    .header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+    h2 { color: var(--primary); font-size: 28px; margin: 0; font-weight: 700; }
+    
+    .stat-box { 
+        background: white; 
+        padding: 12px 25px; 
+        border-radius: 50px; 
+        box-shadow: var(--shadow); 
+        color: var(--primary); 
+        font-weight: 600; 
+        border: 1px solid var(--accent);
+    }
+
+    /* --- FILTERS & INSIGHTS --- */
+    .filter-container { 
+        display: flex; 
+        gap: 20px; 
+        margin-bottom: 25px; 
+        flex-wrap: wrap; 
+    }
+    
+    .filter-bar { 
+        background: white; 
+        padding: 15px 20px; 
+        border-radius: 15px; 
+        display: flex; 
+        align-items: center; 
+        gap: 15px; 
+        box-shadow: var(--shadow); 
+        flex: 1;
+    }
+    .filter-bar select { padding: 8px 12px; border-radius: 8px; border: 1px solid #ddd; outline: none; background: #f9f9f9; cursor: pointer; }
+
+    .insight-box {
+        flex: 2;
+        background: linear-gradient(135deg, #6b10c5 0%, #9d4edd 100%);
+        color: white;
+        padding: 15px 25px;
+        border-radius: 15px;
+        box-shadow: var(--shadow);
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        transition: transform 0.3s ease;
+    }
+    .insight-box:hover { transform: scale(1.01); }
+    .insight-icon { font-size: 24px; background: rgba(255,255,255,0.2); padding: 10px; border-radius: 50%; }
+
+    /* --- CHARTS GRID --- */
+    .charts-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 25px; padding-bottom: 30px; }
+    
+    .chart-card { 
+        background: white; 
+        padding: 25px; 
+        border-radius: 20px; 
+        box-shadow: var(--shadow); 
+        transition: transform 0.2s;
+        border: 1px solid rgba(0,0,0,0.02);
+    }
+    .chart-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+    .chart-card h3 { color: var(--text-dark); margin-top: 0; margin-bottom: 20px; text-align: center; font-size: 1.1em; font-weight: 600; }
+    .chart-wrapper { position: relative; height: 300px; width: 100%; }
+
+    /* --- LOADER --- */
+    #loading-container { text-align: center; margin-top: 100px; }
+    .loader {
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid var(--primary);
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 15px auto;
+    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+    /* Full width for the scatter chart */
+    .full-width { grid-column: 1 / -1; }
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h1><i class="fa-solid fa-graduation-cap"></i> Edu2Job</h1>
+    <div class="menu-btn" onclick="goToDashboard()"><i class="fa-solid fa-house"></i> Overview</div>
+    <div class="menu-btn" onclick="goToFullProfile()"><i class="fa-solid fa-user"></i> Profile Details</div>
+    <div class="menu-btn" onclick="goToProfileSetup()"><i class="fa-solid fa-pen-to-square"></i> Update Info</div>
+    <div class="menu-btn" onclick="goToHistoryPage()"><i class="fa-solid fa-clock-rotate-left"></i> History</div>
+    <div class="menu-btn active" onclick="goToVisual()"><i class="fa-solid fa-chart-pie"></i> Insights</div>
+    <div class="menu-btn logout" onclick="logoutAndRedirect()"><i class="fa-solid fa-right-from-bracket"></i> Logout</div>
+</div>
+
+<div class="main">
+    <div class="header-row">
+        <h2>Career Insights & Analytics</h2>
+        <div class="stat-box"><i class="fa-solid fa-users"></i> Analyzed Students: <span id="totalCount">--</span></div>
+    </div>
+
+    <div class="filter-container">
+        <div class="filter-bar">
+            <label><i class="fa-solid fa-filter"></i> <strong>Filter Degree:</strong></label>
+            <select id="degreeFilter" onchange="applyFilter()">
+                <option value="All">All Degrees</option>
+            </select>
+        </div>
+
+        <div class="insight-box" id="insightBox" style="display:none;">
+            <div class="insight-icon"><i class="fa-solid fa-lightbulb"></i></div>
+            <div>
+                <strong style="display:block; font-size:0.9em; opacity:0.9;">AI Smart Insight</strong>
+                <span id="textInsight">Analyzing data...</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading-container">
+        <div class="loader"></div>
+        <p>Fetching latest analytics...</p>
+    </div>
+
+    <div class="charts-container" id="chartsArea" style="display:none;">
+        
+        <div class="chart-card">
+            <h3><i class="fa-solid fa-layer-group"></i> Career Domain Distribution</h3>
+            <div class="chart-wrapper"><canvas id="domainChart"></canvas></div>
+        </div>
+
+        <div class="chart-card">
+            <h3><i class="fa-solid fa-briefcase"></i> Role Popularity</h3>
+            <div class="chart-wrapper"><canvas id="degreeChart"></canvas></div>
+        </div>
+
+        <div class="chart-card full-width">
+            <h3><i class="fa-solid fa-bullseye"></i> Impact of GPA on Prediction Confidence</h3>
+            <div class="chart-wrapper"><canvas id="scatterChart"></canvas></div>
+            <p style="text-align:center; font-size:0.85em; color:#888; margin-top:15px;">
+                <i class="fa-solid fa-circle-info"></i> Higher GPA often correlates with higher model confidence scores.
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    /* --- Navigation Functions --- */
+    function goToDashboard(){ window.location.href = "dashboard.html"; }
+    function goToFullProfile(){ window.location.href = "profile_details.html"; }
+    function goToProfileSetup(){ window.location.href = "profile_setup.html"; }
+    function goToHistoryPage(){ window.location.href = "history.html"; }
+    function goToVisual(){ window.location.href = "visuals.html"; }
+    function logoutAndRedirect(){ 
+        alert("Logging out..."); 
+        window.location.href = "login.html"; 
+    }
+
+    /* --- Global Variables --- */
+    let globalData = null;
+    let charts = {};
+
+    // Mock Data for fallback
+    const mockData = {
+        total_students: 124,
+        raw_data: [
+            { degree: "B.Tech CS", predicted_role: "Software Developer", cgpa: 8.5, confidence_score: 92 },
+            { degree: "B.Tech CS", predicted_role: "Software Developer", cgpa: 8.8, confidence_score: 95 },
+            { degree: "B.Tech CS", predicted_role: "AI Engineer", cgpa: 9.1, confidence_score: 96 },
+            { degree: "B.Tech CS", predicted_role: "Web Developer", cgpa: 7.5, confidence_score: 82 },
+            { degree: "MBA", predicted_role: "Business Analyst", cgpa: 8.0, confidence_score: 88 },
+            { degree: "MBA", predicted_role: "Marketing Manager", cgpa: 7.8, confidence_score: 85 },
+            { degree: "MBA", predicted_role: "Business Analyst", cgpa: 8.2, confidence_score: 91 },
+            { degree: "B.Des", predicted_role: "UI/UX Designer", cgpa: 8.2, confidence_score: 90 },
+            { degree: "B.Sc Data Science", predicted_role: "Data Scientist", cgpa: 9.5, confidence_score: 98 },
+            { degree: "B.Tech IT", predicted_role: "Software Developer", cgpa: 6.9, confidence_score: 75 }
+        ]
+    };
+
+    async function loadAnalytics() {
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 2000); 
+
+            const res = await fetch("http://127.0.0.1:5000/analytics", { signal: controller.signal });
+            const data = await res.json();
+            
+            if(data.error) throw new Error(data.error);
+            processData(data);
+
+        } catch (err) {
+            console.warn("Backend unavailable. Using Mock Data.");
+            processData(mockData);
+        }
+    }
+
+    function processData(data) {
+        globalData = data;
+        
+        document.getElementById("totalCount").innerText = data.raw_data.length;
+        document.getElementById("loading-container").style.display = "none";
+        document.getElementById("chartsArea").style.display = "grid";
+        document.getElementById("insightBox").style.display = "flex";
+
+        populateFilter(data.raw_data);
+        applyFilter(); // Initial Render
+    }
+
+    function populateFilter(rawData) {
+        const select = document.getElementById("degreeFilter");
+        const degrees = [...new Set(rawData.map(item => item.degree))]; 
+        degrees.forEach(deg => {
+            let opt = document.createElement("option");
+            opt.value = deg;
+            opt.innerText = deg;
+            select.appendChild(opt);
+        });
+    }
+
+    // --- REFACTORED: Central Logic for Filter & Insight ---
+    function applyFilter() {
+        const selectedDegree = document.getElementById("degreeFilter").value;
+        
+        let filteredData = globalData.raw_data;
+        
+        // 1. Filter Data
+        if (selectedDegree !== "All") {
+            filteredData = globalData.raw_data.filter(d => d.degree === selectedDegree);
+        }
+
+        // 2. Update Everything with new data
+        renderCharts(filteredData, selectedDegree);
+        generateTextInsight(filteredData, selectedDegree);
+    }
+
+    function generateTextInsight(data, degreeName) {
+        if (!data || data.length === 0) {
+            document.getElementById("textInsight").innerText = "No data found for this selection.";
+            return;
+        }
+
+        // 1. Find Top Role
+        let roleCounts = {};
+        data.forEach(d => roleCounts[d.predicted_role] = (roleCounts[d.predicted_role] || 0) + 1);
+        let topRole = Object.keys(roleCounts).reduce((a, b) => roleCounts[a] > roleCounts[b] ? a : b);
+        let percent = Math.round((roleCounts[topRole] / data.length) * 100);
+
+        // 2. Calculate Average GPA for this group
+        let totalGPA = data.reduce((sum, item) => sum + item.cgpa, 0);
+        let avgGPA = (totalGPA / data.length).toFixed(1);
+
+        // 3. Dynamic Text Construction
+        let html = "";
+        if(degreeName === "All") {
+            html = `<strong>Global Trend:</strong> The most popular career path across all majors is <strong>${topRole}</strong> (${percent}% of all students).`;
+        } else {
+            html = `<strong>${degreeName} Insight:</strong> <strong>${percent}%</strong> of students with this degree became <strong>${topRole}s</strong>. (Avg GPA: ${avgGPA})`;
+        }
+
+        document.getElementById("textInsight").innerHTML = html;
+    }
+
+    function renderCharts(currentData, degreeName) {
+        
+        // --- CHART 1: DOMAINS ---
+        const domainMap = {
+            "Software Developer": "Tech", "Data Scientist": "Tech", "AI Engineer": "Tech", "Web Developer": "Tech",
+            "Business Analyst": "Business", "Marketing Manager": "Business", "HR Manager": "Business",
+            "UI/UX Designer": "Design", "Product Designer": "Design"
+        };
+        
+        let domainCounts = {};
+        currentData.forEach(d => {
+            let dom = domainMap[d.predicted_role] || "Other";
+            domainCounts[dom] = (domainCounts[dom] || 0) + 1;
+        });
+
+        if (charts.pie) charts.pie.destroy();
+        charts.pie = new Chart(document.getElementById('domainChart'), {
+            type: 'doughnut',
+            data: {
+                labels: Object.keys(domainCounts),
+                datasets: [{ 
+                    data: Object.values(domainCounts), 
+                    backgroundColor: ['#4b0ea5', '#7b2cbf', '#9d4edd', '#e0aaff'],
+                    borderWidth: 0
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right' } } }
+        });
+
+        // --- CHART 2: ROLES ---
+        let labelData = {};
+        // If viewing "All", categorize by Degree. If viewing specific Degree, categorize by Role.
+        let key = degreeName === "All" ? "degree" : "predicted_role";
+        
+        currentData.forEach(d => {
+            labelData[d[key]] = (labelData[d[key]] || 0) + 1;
+        });
+
+        if (charts.bar) charts.bar.destroy();
+        charts.bar = new Chart(document.getElementById('degreeChart'), {
+            type: 'bar',
+            data: {
+                labels: Object.keys(labelData),
+                datasets: [{ 
+                    label: degreeName === "All" ? "Students per Degree" : "Students per Role", 
+                    data: Object.values(labelData), 
+                    backgroundColor: '#7b2cbf', 
+                    borderRadius: 6,
+                }]
+            },
+            options: { 
+                responsive: true, 
+                maintainAspectRatio: false,
+                scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+            }
+        });
+
+        // --- CHART 3: SCATTER ---
+        let scatterPoints = currentData.map(d => ({ x: d.cgpa, y: d.confidence_score }));
+
+        if (charts.scatter) charts.scatter.destroy();
+        charts.scatter = new Chart(document.getElementById('scatterChart'), {
+            type: 'scatter',
+            data: {
+                datasets: [{ 
+                    label: 'Individual Predictions', 
+                    data: scatterPoints, 
+                    backgroundColor: 'rgba(255, 145, 0, 0.8)',
+                    pointRadius: 6,
+                    pointHoverRadius: 8
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                scales: {
+                    x: { type: 'linear', position: 'bottom', title: {display:true, text:'CGPA'} },
+                    y: { title: {display:true, text:'AI Confidence %'}, min: 50, max: 100 }
+                },
+                plugins: { tooltip: { callbacks: { label: (ctx) => `GPA: ${ctx.parsed.x}, Conf: ${ctx.parsed.y}%` } } }
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", loadAnalytics);
+</script>
+</body>
+</html

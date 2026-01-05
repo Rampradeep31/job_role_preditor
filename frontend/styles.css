@@ -1,0 +1,257 @@
+/* =========================================
+   1. GLOBAL & AUTH LAYOUT (Your Existing Code)
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #f8f9ff;
+    height: 100vh;
+    display: flex;
+    justify-content: center; /* Center content if not full width */
+}
+
+/* Split Screen Container (Used for Login/Signup) */
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Left Panel (Purple Side) */
+.left {
+    flex: 1;
+    background: #5A23B5;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 60px;
+}
+
+.title {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* Right Panel (White Side - Form) */
+.right {
+    flex: 1;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 70px;
+}
+
+h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #4a148c;
+    margin-bottom: 25px;
+}
+
+/* Form Elements */
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+}
+
+.input-group input, 
+.input-group select { /* Added select for dropdowns */
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    outline: none;
+    box-sizing: border-box; /* Fixes padding width issues */
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #7b2cbf;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: #7b2cbf;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 600;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #6a22aa;
+}
+
+.link {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.link a {
+    color: #7b2cbf;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* =========================================
+   2. DAY 9: PREDICTION RESULT VISUALIZATION
+   ========================================= */
+
+/* Loading Animation */
+.loading-spinner {
+    font-size: 1.2rem;
+    color: #5A23B5;
+    font-weight: 600;
+    text-align: center;
+    padding: 30px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+/* Main Result Container */
+.result-container {
+    margin-top: 30px;
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* TOP RECOMMENDATION (Hero Card) */
+.top-recommendation {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.top-recommendation h3 {
+    color: #4a148c;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.highlight-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f3e5f5 100%);
+    padding: 25px;
+    border-radius: 12px;
+    border: 2px solid #7b2cbf;
+    box-shadow: 0 10px 25px rgba(123, 44, 191, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.highlight-card:hover {
+    transform: translateY(-5px);
+}
+
+.highlight-card h2 {
+    color: #5A23B5;
+    font-size: 2rem;
+    margin: 0 0 15px 0;
+}
+
+/* Progress Bar (Confidence Score) */
+.progress-bar-container {
+    background: #e0e0e0;
+    border-radius: 20px;
+    height: 12px;
+    width: 80%;
+    margin: 10px auto;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #5A23B5 0%, #9d46ff 100%);
+    box-shadow: 0 0 10px rgba(90, 35, 181, 0.4);
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.confidence-text {
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #2e7d32;
+}
+
+/* ALTERNATIVE CAREERS (Grid) */
+.alternatives {
+    margin-top: 30px;
+}
+
+.alternatives h3 {
+    color: #555;
+    font-size: 1.1rem;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.alternatives-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.alt-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border-left: 5px solid #ff9800; /* Orange accent */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: background 0.2s;
+}
+
+.alt-card:hover {
+    background: #fff8e1;
+}
+
+.alt-role {
+    font-weight: 600;
+    color: #333;
+    font-size: 1rem;
+}
+
+.alt-score {
+    background: #f0f0f0;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #666;
+}

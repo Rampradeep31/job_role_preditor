@@ -1,0 +1,666 @@
+{
+    "total_predictions": 100,
+    "distribution_chart": {
+        "Financial Auditor": 10,
+        "Site Supervisor": 10,
+        "Marketing Manager": 7,
+        "Graphic Designer": 4,
+        "AI Engineer": 5,
+        "HR Specialist": 9,
+        "UI/UX Designer": 6,
+        "Business Analyst": 5,
+        "Software Developer": 10,
+        "Mechanical Design Engineer": 8,
+        "Data Scientist": 6,
+        "Product Designer": 5,
+        "Project Engineer": 7,
+        "Cybersecurity Analyst": 8
+    },
+    "degree_map_chart": {
+        "MBA": {
+            "Financial Auditor": 6,
+            "Marketing Manager": 3,
+            "Business Analyst": 3,
+            "HR Specialist": 2
+        },
+        "Civil Engineering": {
+            "Site Supervisor": 5,
+            "Project Engineer": 7,
+            "Mechanical Design Engineer": 6
+        },
+        "BBA Marketing": {
+            "Marketing Manager": 2,
+            "HR Specialist": 3,
+            "Business Analyst": 1,
+            "Financial Auditor": 2
+        },
+        "B.Des": {
+            "Graphic Designer": 4,
+            "UI/UX Designer": 6,
+            "Product Designer": 5
+        },
+        "Computer Science Engineering": {
+            "AI Engineer": 5,
+            "Software Developer": 7,
+            "Data Scientist": 4,
+            "Cybersecurity Analyst": 5
+        },
+        "BBA Finance": {
+            "HR Specialist": 4,
+            "Business Analyst": 1,
+            "Financial Auditor": 2,
+            "Marketing Manager": 2
+        },
+        "Mechanical Engineering": {
+            "Mechanical Design Engineer": 2,
+            "Site Supervisor": 5
+        },
+        "Information Technology": {
+            "Data Scientist": 2,
+            "Software Developer": 3,
+            "Cybersecurity Analyst": 3
+        }
+    },
+    "raw_data": [
+        {
+            "degree": "MBA",
+            "predicted_role": "Financial Auditor",
+            "cgpa": 9.03,
+            "confidence_score": 95.0
+        },
+        {
+            "degree": "Civil Engineering",
+            "predicted_role": "Site Supervisor",
+            "cgpa": 6.58,
+            "confidence_score": 74.9
+        },
+        {
+            "degree": "BBA Marketing",
+            "predicted_role": "Marketing Manager",
+            "cgpa": 7.84,
+            "confidence_score": 92.1
+        },
+        {
+            "degree": "MBA",
+            "predicted_role": "Marketing Manager",
+            "cgpa": 8.89,
+            "confidence_score": 78.4
+        },
+        {
+            "degree": "MBA",
+            "predicted_role": "Financial Auditor",
+            "cgpa": 7.54,
+            "confidence_score": 95.7
+        },
+        {
+            "degree": "B.Des",
+            "predicted_role": "Graphic Designer",
+            "cgpa": 7.37,
+            "confidence_score": 88.7
+        },
+        {
+            "degree": "Computer Science Engineering",
+            "predicted_role": "AI Engineer",
+            "cgpa": 7.63,
+            "confidence_score": 90.6
+        },
+        {
+            "degree": "BBA Finance",
+            "predicted_role": "HR Specialist",
+            "cgpa": 7.41,
+            "confidence_score": 79.9
+        },
+        {
+            "degree": "BBA Marketing",
+            "predicted_role": "HR Specialist",
+            "cgpa": 6.94,
+            "confidence_score": 86.2
+        },
+        {
+            "degree": "B.Des",
+            "predicted_role": "UI/UX Designer",
+            "cgpa": 6.58,
+            "confidence_score": 94.1
+        },
+        {
+            "degree": "Civil Engineering",
+            "predicted_role": "Site Supervisor",
+            "cgpa": 7.24,
+            "confidence_score": 95.7
+        },
+        {
+            "degree": "Civil Engineering",
+            "predicted_role": "Site Supervisor",
+            "cgpa": 6.76,
+            "confidence_score": 72.4
+        },
+        {
+            "degree": "BBA Finance",
+            "predicted_role": "Business Analyst",
+            "cgpa": 7.59,
+            "confidence_score": 83.8
+        },
+        {
+            "degree": "Computer Science Engineering",
+            "predicted_role": "Software Developer",
+            "cgpa": 7.17,
+            "confidence_score": 89.0
+        },
+        {
+            "degree": "BBA Finance",
+            "predicted_role": "Financial Auditor",
+            "cgpa": 9.45,
+            "confidence_score": 93.5
+        },
+        {
+            "degree": "Mechanical Engineering",
+            "predicted_role": "Mechanical Design Engineer",
+            "cgpa": 9.4,
+            "confidence_score": 75.0
+        },
+        {
+            "degree": "MBA",
+            "predicted_role": "Marketing Manager",
+            "cgpa": 6.74,
+            "confidence_score": 81.8
+        },
+        {
+            "degree": "Mechanical Engineering",
+            "predicted_role": "Site Supervisor",
+            "cgpa": 7.27,
+            "confidence_score": 78.6
+        },
+        {
+            "degree": "B.Des",
+            "predicted_role": "Graphic Designer",
+            "cgpa": 8.42,
+            "confidence_score": 83.5
+        },
+        {
+            "degree": "Computer Science Engineering",
+            "predicted_role": "Data Scientist",
+            "cgpa": 9.07,
+            "confidence_score": 90.0
+        },
+        {
+            "degree": "Information Technology",
+            "predicted_role": "Data Scientist",
+            "cgpa": 7.22,
+            "confidence_score": 78.1
+        },
+        {
+            "degree": "BBA Marketing",
+            "predicted_role": "Business Analyst",
+            "cgpa": 8.78,
+            "confidence_score": 78.8
+        },
+        {
+            "degree": "MBA",
+            "predicted_role": "Business Analyst",
+            "cgpa": 9.23,
+            "confidence_score": 88.8
+        },
+        {
+            "degree": "MBA",
+            "predicted_role": "Marketing Manager",
+            "cgpa": 8.61,
+            "confidence_score": 94.9
+        },
+        {
+            "degree": "MBA",
+            "predicted_role": "HR Specialist",
+            "cgpa": 9.45,
+            "confidence_score": 90.6
+        },
+        {
+            "degree": "B.Des",
+            "predicted_role": "Product Designer",
+            "cgpa": 6.5,
+            "confidence_score": 73.7
+        },
+        {
+            "degree": "Computer Science Engineering",
+            "predicted_role": "Software Developer",
+            "cgpa": 9.29,
+            "confidence_score": 92.5
+        },
+        {
+            "degree": "MBA",
+            "predicted_role": "Financial Auditor",
+            "cgpa": 8.47,
+            "confidence_score": 70.7
+        },
+        {
+            "degree": "BBA Finance",
+            "predicted_role": "HR Specialist",
+            "cgpa": 6.2,
+            "confidence_score": 87.2
+        },
+        {
+            "degree": "Civil Engineering",
+            "predicted_role": "Project Engineer",
+            "cgpa": 7.18,
+            "confidence_score": 89.3
+        },
+        {
+            "degree": "B.Des",
+            "predicted_role": "UI/UX Designer",
+            "cgpa": 8.65,
+            "confidence_score": 80.3
+        },
+        {
+            "degree": "BBA Finance",
+            "predicted_role": "Marketing Manager",
+            "cgpa": 8.12,
+            "confidence_score": 93.1
+        },
+        {
+            "degree": "Information Technology",
+            "predicted_role": "Software Developer",
+            "cgpa": 8.13,
+            "confidence_score": 97.1
+        },
+        {
+            "degree": "Civil Engineering",
+            "predicted_role": "Mechanical Design Engineer",
+            "cgpa": 7.7,
+            "confidence_score": 93.2
+        },
+        {
+            "degree": "Computer Science Engineering",
+            "predicted_role": "Software Developer",
+            "cgpa": 8.58,
+            "confidence_score": 73.6
+        },
+        {
+            "degree": "Computer Science Engineering",
+            "predicted_role": "AI Engineer",
+            "cgpa": 6.19,
+            "confidence_score": 92.0
+        },
+        {
+            "degree": "Computer Science Engineering",
+            "predicted_role": "Cybersecurity Analyst",
+            "cgpa": 9.8,
+            "confidence_score": 70.4
+        },
+        {
+            "degree": "Information Technology",
+            "predicted_role": "Cybersecurity Analyst",
+            "cgpa": 8.96,
+            "confidence_score": 86.8
+        },
+        {
+            "degree": "Computer Science Engineering",
+            "predicted_role": "AI Engineer",
+            "cgpa": 7.31,
+            "confidence_score": 73.5
+        },
+        {
+            "degree": "Computer Science Engineering",
+            "predicted_role": "Cybersecurity Analyst",
+            "cgpa": 7.14,
+            "confidence_score": 73.3
+        },
+        {
+            "degree": "B.Des",
+            "predicted_role": "Graphic Designer",
+            "cgpa": 8.38,
+            "confidence_score": 93.7
+        },
+        {
+            "degree": "MBA",
+            "predicted_role": "Financial Auditor",
+            "cgpa": 7.06,
+            "confidence_score": 86.0
+        },
+        {
+            "degree": "Computer Science Engineering",
+            "predicted_role": "Data Scientist",
+            "cgpa": 7.57,
+            "confidence_score": 76.1
+        },
+        {
+            "degree": "MBA",
+            "predicted_role": "Business Analyst",
+            "cgpa": 7.98,
+            "confidence_score": 71.9
+        },
+        {
+            "degree": "Civil Engineering",
+            "predicted_role": "Project Engineer",
+            "cgpa": 8.44,
+            "confidence_score": 89.1
+        },
+        {
+            "degree": "MBA",
+            "predicted_role": "Financial Auditor",
+            "cgpa": 7.89,
+            "confidence_score": 79.9
+        },
+        {
+            "degree": "MBA",
+            "predicted_role": "Business Analyst",
+            "cgpa": 8.92,
+            "confidence_score": 70.0
+        },
+        {
+            "degree": "MBA",
+            "predicted_role": "HR Specialist",
+            "cgpa": 6.67,
+            "confidence_score": 70.4
+        },
+        {
+            "degree": "Civil Engineering",
+            "predicted_role": "Mechanical Design Engineer",
+            "cgpa": 6.62,
+            "confidence_score": 83.0
+        },
+        {
+            "degree": "Civil Engineering",
+            "predicted_role": "Mechanical Design Engineer",
+            "cgpa": 9.45,
+            "confidence_score": 80.1
+        },
+        {
+            "degree": "Mechanical Engineering",
+            "predicted_role": "Site Supervisor",
+            "cgpa": 7.69,
+            "confidence_score": 92.9
+        },
+        {
+            "degree": "Civil Engineering",
+            "predicted_role": "Site Supervisor",
+            "cgpa": 9.47,
+            "confidence_score": 77.0
+        },
+        {
+            "degree": "B.Des",
+            "predicted_role": "UI/UX Designer",
+            "cgpa": 8.93,
+            "confidence_score": 82.1
+        },
+        {
+            "degree": "Civil Engineering",
+            "predicted_role": "Project Engineer",
+            "cgpa": 6.1,
+            "confidence_score": 80.7
+        },
+        {
+            "degree": "Computer Science Engineering",
+            "predicted_role": "Cybersecurity Analyst",
+            "cgpa": 7.22,
+            "confidence_score": 98.5
+        },
+        {
+            "degree": "Civil Engineering",
+            "predicted_role": "Mechanical Design Engineer",
+            "cgpa": 8.21,
+            "confidence_score": 79.3
+        },
+        {
+            "degree": "Civil Engineering",
+            "predicted_role": "Project Engineer",
+            "cgpa": 6.45,
+            "confidence_score": 73.8
+        },
+        {
+            "degree": "Information Technology",
+            "predicted_role": "Cybersecurity Analyst",
+            "cgpa": 9.26,
+            "confidence_score": 83.5
+        },
+        {
+            "degree": "Information Technology",
+            "predicted_role": "Data Scientist",
+            "cgpa": 7.21,
+            "confidence_score": 91.3
+        },
+        {
+            "degree": "Information Technology",
+            "predicted_role": "Cybersecurity Analyst",
+            "cgpa": 6.02,
+            "confidence_score": 72.6
+        },
+        {
+            "degree": "Mechanical Engineering",
+            "predicted_role": "Site Supervisor",
+            "cgpa": 7.06,
+            "confidence_score": 73.7
+        },
+        {
+            "degree": "B.Des",
+            "predicted_role": "Product Designer",
+            "cgpa": 7.39,
+            "confidence_score": 99.0
+        },
+        {
+            "degree": "Computer Science Engineering",
+            "predicted_role": "Cybersecurity Analyst",
+            "cgpa": 8.02,
+            "confidence_score": 93.6
+        },
+        {
+            "degree": "B.Des",
+            "predicted_role": "UI/UX Designer",
+            "cgpa": 8.18,
+            "confidence_score": 85.8
+        },
+        {
+            "degree": "BBA Marketing",
+            "predicted_role": "HR Specialist",
+            "cgpa": 9.12,
+            "confidence_score": 93.0
+        },
+        {
+            "degree": "BBA Finance",
+            "predicted_role": "Financial Auditor",
+            "cgpa": 6.69,
+            "confidence_score": 91.5
+        },
+        {
+            "degree": "BBA Marketing",
+            "predicted_role": "Marketing Manager",
+            "cgpa": 8.87,
+            "confidence_score": 70.6
+        },
+        {
+            "degree": "BBA Marketing",
+            "predicted_role": "HR Specialist",
+            "cgpa": 7.14,
+            "confidence_score": 90.5
+        },
+        {
+            "degree": "B.Des",
+            "predicted_role": "Product Designer",
+            "cgpa": 8.19,
+            "confidence_score": 73.4
+        },
+        {
+            "degree": "Civil Engineering",
+            "predicted_role": "Mechanical Design Engineer",
+            "cgpa": 9.5,
+            "confidence_score": 88.5
+        },
+        {
+            "degree": "BBA Finance",
+            "predicted_role": "HR Specialist",
+            "cgpa": 8.73,
+            "confidence_score": 89.1
+        },
+        {
+            "degree": "BBA Finance",
+            "predicted_role": "HR Specialist",
+            "cgpa": 8.93,
+            "confidence_score": 78.2
+        },
+        {
+            "degree": "Computer Science Engineering",
+            "predicted_role": "AI Engineer",
+            "cgpa": 7.96,
+            "confidence_score": 84.9
+        },
+        {
+            "degree": "Information Technology",
+            "predicted_role": "Software Developer",
+            "cgpa": 9.32,
+            "confidence_score": 98.2
+        },
+        {
+            "degree": "Computer Science Engineering",
+            "predicted_role": "Software Developer",
+            "cgpa": 7.76,
+            "confidence_score": 71.9
+        },
+        {
+            "degree": "Information Technology",
+            "predicted_role": "Software Developer",
+            "cgpa": 6.44,
+            "confidence_score": 76.4
+        },
+        {
+            "degree": "B.Des",
+            "predicted_role": "UI/UX Designer",
+            "cgpa": 7.54,
+            "confidence_score": 75.2
+        },
+        {
+            "degree": "Civil Engineering",
+            "predicted_role": "Mechanical Design Engineer",
+            "cgpa": 7.81,
+            "confidence_score": 96.8
+        },
+        {
+            "degree": "B.Des",
+            "predicted_role": "Product Designer",
+            "cgpa": 9.31,
+            "confidence_score": 82.9
+        },
+        {
+            "degree": "Mechanical Engineering",
+            "predicted_role": "Site Supervisor",
+            "cgpa": 8.22,
+            "confidence_score": 78.5
+        },
+        {
+            "degree": "Civil Engineering",
+            "predicted_role": "Site Supervisor",
+            "cgpa": 6.74,
+            "confidence_score": 89.2
+        },
+        {
+            "degree": "BBA Marketing",
+            "predicted_role": "Financial Auditor",
+            "cgpa": 8.1,
+            "confidence_score": 88.5
+        },
+        {
+            "degree": "Computer Science Engineering",
+            "predicted_role": "Software Developer",
+            "cgpa": 8.58,
+            "confidence_score": 82.4
+        },
+        {
+            "degree": "BBA Marketing",
+            "predicted_role": "Financial Auditor",
+            "cgpa": 6.72,
+            "confidence_score": 84.7
+        },
+        {
+            "degree": "Mechanical Engineering",
+            "predicted_role": "Site Supervisor",
+            "cgpa": 6.84,
+            "confidence_score": 91.2
+        },
+        {
+            "degree": "B.Des",
+            "predicted_role": "Product Designer",
+            "cgpa": 7.9,
+            "confidence_score": 78.5
+        },
+        {
+            "degree": "Civil Engineering",
+            "predicted_role": "Project Engineer",
+            "cgpa": 9.01,
+            "confidence_score": 95.1
+        },
+        {
+            "degree": "Mechanical Engineering",
+            "predicted_role": "Mechanical Design Engineer",
+            "cgpa": 8.7,
+            "confidence_score": 79.5
+        },
+        {
+            "degree": "Computer Science Engineering",
+            "predicted_role": "Data Scientist",
+            "cgpa": 9.49,
+            "confidence_score": 90.6
+        },
+        {
+            "degree": "B.Des",
+            "predicted_role": "UI/UX Designer",
+            "cgpa": 6.21,
+            "confidence_score": 86.6
+        },
+        {
+            "degree": "Computer Science Engineering",
+            "predicted_role": "Software Developer",
+            "cgpa": 6.23,
+            "confidence_score": 87.4
+        },
+        {
+            "degree": "Civil Engineering",
+            "predicted_role": "Project Engineer",
+            "cgpa": 8.32,
+            "confidence_score": 77.5
+        },
+        {
+            "degree": "Computer Science Engineering",
+            "predicted_role": "Cybersecurity Analyst",
+            "cgpa": 7.37,
+            "confidence_score": 88.1
+        },
+        {
+            "degree": "Computer Science Engineering",
+            "predicted_role": "Software Developer",
+            "cgpa": 7.15,
+            "confidence_score": 77.9
+        },
+        {
+            "degree": "Computer Science Engineering",
+            "predicted_role": "AI Engineer",
+            "cgpa": 8.43,
+            "confidence_score": 77.8
+        },
+        {
+            "degree": "Civil Engineering",
+            "predicted_role": "Project Engineer",
+            "cgpa": 8.61,
+            "confidence_score": 97.4
+        },
+        {
+            "degree": "MBA",
+            "predicted_role": "Financial Auditor",
+            "cgpa": 9.37,
+            "confidence_score": 74.8
+        },
+        {
+            "degree": "Computer Science Engineering",
+            "predicted_role": "Data Scientist",
+            "cgpa": 7.49,
+            "confidence_score": 90.6
+        },
+        {
+            "degree": "B.Des",
+            "predicted_role": "Graphic Designer",
+            "cgpa": 8.75,
+            "confidence_score": 76.1
+        },
+        {
+            "degree": "BBA Finance",
+            "predicted_role": "Marketing Manager",
+            "cgpa": 7.09,
+            "confidence_score": 77.8
+        }
+    ]
+}

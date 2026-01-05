@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Edu2Job | History & Insights</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Poppins", sans-serif; background: #f3eaff; display: flex; height: 100vh; overflow: hidden; }
+.sidebar { width: 260px; background: #4b0ea5; color: white; padding: 30px 22px; display: flex; flex-direction: column; flex-shrink: 0; }
+.sidebar h1 { font-size: 32px; font-weight: 700; margin-bottom: 40px; }
+.menu-btn { padding: 14px; border-radius: 10px; margin-bottom: 15px; font-size: 16px; cursor: pointer; transition: 0.3s; }
+.menu-btn:hover, .menu-btn.active { background: #ffffff33; }
+.logout { margin-top: auto; cursor: pointer; }
+
+/* Main area */
+.main { flex: 1; padding: 28px 40px; overflow-y: auto; display: flex; flex-direction: column; }
+.top-right { display: flex; justify-content: flex-end; align-items: center; gap: 12px; }
+.avatar { width: 40px; height: 40px; background-size: cover; border-radius: 50%; background-position: center; background-color: #d8bbff; }
+h2 { color: #4a148c; font-size: 28px; margin-top: 20px; margin-bottom: 25px; }
+
+/* Cards */
+.card { background: white; padding: 25px; border-radius: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 30px; }
+.card h3 { color: #6b10c5; margin-top: 0; margin-bottom: 20px; font-size: 1.2em; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+
+/* Top 5 Bars */
+.bar-row { display: flex; align-items: center; margin-bottom: 15px; }
+.bar-label { width: 220px; font-weight: 500; color: #333; }
+.bar-track { flex: 1; background: #e4d2ff; height: 12px; border-radius: 20px; margin: 0 15px; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, #b347ff, #7b2cbf); border-radius: 20px; width: 0%; transition: width 1s; }
+.bar-score { width: 50px; text-align: right; font-weight: 600; color: #6b10c5; }
+
+/* Table */
+table { width: 100%; text-align: left; border-collapse: collapse; }
+th { padding: 12px; color: #6b10c5; border-bottom: 2px solid #f3eaff; }
+td { padding: 12px; color: #555; border-bottom: 1px solid #eee; }
+.conf-tag { background: #e4d2ff; color: #6b10c5; padding: 4px 8px; border-radius: 12px; font-size: 0.85em; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h1>Edu2Job</h1>
+    <div class="menu-btn" onclick="goToDashboard()">Profile Overview</div>
+    <div class="menu-btn" onclick="goToFullProfile()">Profile Details</div>
+    <div class="menu-btn" onclick="goToProfileSetup()">Update Educational Profile</div>
+    <div class="menu-btn active" onclick="goToHistoryPage()">Prediction History</div>
+    <div class="logout" onclick="logoutAndRedirect()">Logout</div>
+</div>
+
+<div class="main">
+    <div class="top-right">
+        <div id="topUserName" style="font-weight:600;color:#4a148c;">User</div>
+        <div class="avatar" id="userAvatar"></div>
+    </div>
+    
+    <h2>Prediction Analysis</h2>
+
+    <div class="card">
+        <h3>🏆 Top 5 Recommended Roles (Current Profile)</h3>
+        <div id="top-5-container">
+            <div style="color:#888; text-align:center; padding:20px;">
+                No active prediction found. Please visit the Dashboard first.
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>📜 Prediction History Log</h3>
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date & Time</th>
+                        <th>Predicted Role</th>
+                        <th>Confidence</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody id="history-table-body">
+                    <tr><td colspan="4" style="text-align:center; padding:20px;">Loading history...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+<script>
+    /* Navigation */
+    window.goToDashboard = function(){ window.location.href = "dashboard.html"; }
+    window.goToFullProfile = function(){ window.location.href = "profile_details.html"; }
+    window.goToProfileSetup = function(){ window.location.href = "profile_setup.html"; }
+    window.goToHistoryPage = function(){ window.location.href = "history.html"; }
+
+    async function loadHistoryPage() {
+        // 1. Load User Info
+        try {
+            const userData = await fetchProfile();
+            document.getElementById("topUserName").textContent = userData.username || "User";
+            let img = localStorage.getItem("google_picture");
+            if (!img) img = "https://cdn-icons-png.flaticon.com/512/149/149071.png"; 
+            document.getElementById("userAvatar").style.backgroundImage = `url('${img}')`;
+        } catch(e) { console.log("Profile load err", e); }
+
+        // 2. Load Top 5 from Session Cache
+        const savedRecs = sessionStorage.getItem("cached_recommendations");
+        if (savedRecs) {
+            renderTop5(JSON.parse(savedRecs));
+        }
+
+        // 3. Load Full History from Backend
+        loadBackendHistory();
+    }
+
+    function renderTop5(recs) {
+        const container = document.getElementById("top-5-container");
+        container.innerHTML = "";
+        
+        recs.forEach(item => {
+            const html = `
+            <div class="bar-row">
+                <div class="bar-label">${item.role}</div>
+                <div class="bar-track">
+                    <div class="bar-fill" style="width: ${item.confidence}"></div>
+                </div>
+                <div class="bar-score">${item.confidence}</div>
+            </div>`;
+            container.innerHTML += html;
+        });
+    }
+
+    async function loadBackendHistory() {
+        try {
+            const token = getToken();
+            const res = await fetch("http://127.0.0.1:5000/history", {
+                headers: { "Authorization": "Bearer " + token }
+            });
+            const data = await res.json();
+            
+            const tbody = document.getElementById("history-table-body");
+            tbody.innerHTML = ""; 
+
+            if (data.length === 0) {
+                tbody.innerHTML = "<tr><td colspan='4' style='text-align:center; padding:20px;'>No history yet.</td></tr>";
+                return;
+            }
+
+            data.forEach(item => {
+                const row = `
+                <tr>
+                    <td>${item.date}</td>
+                    <td style="font-weight:600; color:#4a148c;">${item.role}</td>
+                    <td><span class="conf-tag">${item.confidence}</span></td>
+                    <td style="font-size:0.85em; color:#666;">${item.role}</td>
+                </tr>`;
+                tbody.innerHTML += row;
+            });
+
+        } catch (err) {
+            console.error("History Error:", err);
+            document.getElementById("history-table-body").innerHTML = "<tr><td colspan='4' style='color:red; text-align:center;'>Failed to load history.</td></tr>";
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", loadHistoryPage);
+</script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Profile Details</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body {
+    font-family: "Poppins";
+    margin: 0;
+    background: #f5f2fb;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #4a148c;
+    margin-bottom: 25px;
+}
+
+.section-title {
+    font-size: 20px;
+    margin-top: 25px;
+    color: #6b10c5;
+}
+
+.item-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px dashed #ddd;
+}
+
+.label {
+    font-weight: 600;
+    color: #444;
+}
+
+.value {
+    color: #333;
+}
+
+.back-btn {
+    margin-top: 18px;
+    padding: 12px;
+    width: 100%;
+    background: #7b2cbf;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Profile Details</h1>
+
+    <div class="section-title">Basic Information</div>
+    <div class="item-row"><span class="label">Name</span><span class="value" id="name">--</span></div>
+    <div class="item-row"><span class="label">Email</span><span class="value" id="email">--</span></div>
+    <div class="item-row"><span class="label">Phone</span><span class="value" id="phone">--</span></div>
+
+    <div class="section-title">Education</div>
+    <div class="item-row"><span class="label">Degree</span><span class="value" id="degree">--</span></div>
+    <div class="item-row"><span class="label">Specialization</span><span class="value" id="specialization">--</span></div>
+    <div class="item-row"><span class="label">CGPA</span><span class="value" id="cgpa">--</span></div>
+    <div class="item-row"><span class="label">Graduation Year</span><span class="value" id="year">--</span></div>
+
+    <div class="section-title">Skills & Experience</div>
+    <div class="item-row"><span class="label">Skills</span><span class="value" id="skills">--</span></div>
+    <div class="item-row"><span class="label">Certifications</span><span class="value" id="certs">--</span></div>
+    <div class="item-row"><span class="label">Internship</span><span class="value" id="intern">--</span></div>
+    <div class="item-row"><span class="label">Internship Duration</span><span class="value" id="duration">--</span></div>
+
+    <button class="back-btn" onclick="window.location.href='dashboard.html'">
+        Back to Dashboard
+    </button>
+</div>
+
+<!-- REQUIRED -->
+<script src="script.js"></script>
+
+<script>
+async function loadDetails() {
+    try {
+        const data = await fetchProfile();
+
+        document.getElementById("name").textContent =
+            data.username || "--";
+
+        document.getElementById("email").textContent =
+            data.email || "--";
+
+        document.getElementById("phone").textContent =
+            data.phone || "--";
+
+        document.getElementById("degree").textContent =
+            data.degree || "--";
+
+        document.getElementById("specialization").textContent =
+            data.specialization || "--";
+
+        document.getElementById("cgpa").textContent =
+            data.cgpa ?? "--";
+
+        document.getElementById("year").textContent =
+            data.year || "--";
+
+        document.getElementById("skills").textContent =
+            data.skills || "--";
+
+        document.getElementById("certs").textContent =
+            data.certifications || "--";
+
+        document.getElementById("intern").textContent =
+            data.internship || "--";
+
+        document.getElementById("duration").textContent =
+            data.duration || "--";
+
+    } catch (err) {
+        console.error("Profile load failed", err);
+        alert("Session expired. Please login again.");
+        window.location.href = "login.html";
+    }
+}
+
+loadDetails();
+</script>
+
+</body>
+</html>

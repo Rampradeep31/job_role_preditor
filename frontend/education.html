@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Add Education Details</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+  body { font-family: Poppins, sans-serif; background: #f8f9ff; padding: 20px; }
+  .card { max-width: 520px; margin: 0 auto; padding: 25px;
+          background: white; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+  label { font-weight: 600; display: block; margin-bottom: 6px; }
+  input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px;
+          margin-bottom: 10px; outline: none; }
+  input:focus { border-color: #7b2cbf; }
+  .btn { width: 100%; padding: 12px; background: #7b2cbf; color: white; border: none;
+         border-radius: 8px; cursor: pointer; font-size: 16px; margin-top: 10px; }
+  .btn:hover { background: #6a22aa; }
+  .msg { margin-top: 15px; font-weight: bold; text-align: center; }
+</style>
+
+</head>
+<body>
+
+<div class="card">
+  <h2>Add Education Details</h2>
+
+  <label>Degree *</label>
+  <input type="text" id="degree">
+
+  <label>Specialization *</label>
+  <input type="text" id="specialization">
+
+  <label>CGPA (0-10) *</label>
+  <input type="number" id="cgpa" step="0.1">
+
+  <label>Graduation Year *</label>
+  <input type="text" id="year">
+
+  <label>University *</label>
+  <input type="text" id="university">
+
+  <button class="btn" onclick="submitEducation()">Save</button>
+
+  <div id="msg" class="msg"></div>
+</div>
+
+
+<script>
+const API = "http://127.0.0.1:5000";
+
+async function submitEducation() {
+    const token = localStorage.getItem("access_token");
+
+    const body = {
+
+    degree: document.getElementById("degree").value,
+    specialization: document.getElementById("specialization").value,
+    cgpa: document.getElementById("cgpa").value,
+    year: document.getElementById("year").value, // ✅ Correct key matches backend
+    university: document.getElementById("university").value
+};
+    };
+
+    const res = await fetch(API + "/education/add", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        },
+        body: JSON.stringify(body)
+    });
+
+    const data = await res.json();
+
+    const msg = document.getElementById("msg");
+
+    if (!res.ok) {
+        msg.style.color = "red";
+        msg.textContent = data.error;
+    } else {
+        msg.style.color = "green";
+        msg.textContent = "Education saved successfully!";
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Edu2Job | Signup</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styles.css"> 
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="left">
+    <div class="title">Join Edu2Job</div>
+    <div class="subtitle">Start your career journey today</div>
+  </div>
+
+  <div class="right">
+    <h2>Create Account</h2>
+
+    <form id="signupForm" autocomplete="off">
+
+      <div class="input-group">
+        <label>Full Name</label>
+        <input type="text" id="su_username" placeholder="e.g. John Doe" required>
+      </div>
+
+      <div class="input-group">
+        <label>Email Address</label>
+        <input type="email" id="su_email" placeholder="john@example.com" required>
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" id="su_password" placeholder="At least 6 chars" required>
+      </div>
+
+      <div class="input-group">
+        <label>Confirm Password</label>
+        <input type="password" id="su_confirm" placeholder="Repeat password" required>
+      </div>
+
+      <div id="signup-error" style="color: red; text-align: center; margin-bottom: 10px; display: none;"></div>
+      <div id="signup-success" style="color: green; text-align: center; margin-bottom: 10px; display: none;"></div>
+
+      <button class="btn" type="submit">Sign Up</button>
+
+      <div class="link">
+        Already have an account? <a href="login.html">Login</a>
+      </div>
+
+    </form>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+document.getElementById("signupForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // 1. Get Values
+    const name = document.getElementById("su_username").value.trim();
+    const email = document.getElementById("su_email").value.trim();
+    const pass = document.getElementById("su_password").value;
+    const confirm = document.getElementById("su_confirm").value;
+    
+    const errorDiv = document.getElementById("signup-error");
+    const successDiv = document.getElementById("signup-success");
+
+    // Reset messages
+    errorDiv.style.display = "none";
+    successDiv.style.display = "none";
+
+    // 2. Client-Side Validation
+    if (name.length < 3) {
+        showError("Name must be at least 3 characters.");
+        return;
+    }
+    if (!email.includes("@")) {
+        showError("Please enter a valid email.");
+        return;
+    }
+    if (pass.length < 6) {
+        showError("Password must be at least 6 characters.");
+        return;
+    }
+    if (pass !== confirm) {
+        showError("Passwords do not match!");
+        return;
+    }
+
+    // 3. Send to Backend
+    try {
+        const res = await doSignup(name, email, pass); // Function from script.js
+        const data = await res.json();
+
+        if (res.ok) {
+            // Success!
+            successDiv.innerText = "✅ Account created! Redirecting to login...";
+            successDiv.style.display = "block";
+            
+            // Wait 1.5 seconds then go to login
+            setTimeout(() => {
+                window.location.href = "login.html";
+            }, 1500);
+        } else {
+            // Error from server (e.g., Email already exists)
+            showError(data.error || "Signup failed.");
+        }
+
+    } catch (error) {
+        console.error(error);
+        showError("❌ Network Error. Is the server running?");
+    }
+
+    function showError(msg) {
+        errorDiv.innerText = msg;
+        errorDiv.style.display = "block";
+    }
+});
+</script>
+
+</body>
+</html>

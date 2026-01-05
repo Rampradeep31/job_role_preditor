@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Edu2Job | Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+/* --- RESET & VARIABLES --- */
+* { box-sizing: border-box; }
+body { 
+    margin: 0; 
+    font-family: "Poppins", sans-serif; 
+    background: linear-gradient(135deg, #f3eaff 0%, #e0c3fc 100%); /* Modern Gradient BG */
+    display: flex; 
+    height: 100vh; 
+    overflow: hidden; 
+}
+
+/* --- SIDEBAR (Modern & Curved) --- */
+.sidebar { 
+    width: 260px; 
+    background: #4b0ea5; 
+    color: white; 
+    padding: 30px 22px; 
+    display: flex; 
+    flex-direction: column; 
+    flex-shrink: 0; 
+    border-top-right-radius: 25px; /* Curved corner */
+    border-bottom-right-radius: 25px; /* Curved corner */
+    box-shadow: 5px 0 20px rgba(75, 14, 165, 0.15); /* Soft shadow */
+}
+.sidebar h1 { font-size: 32px; font-weight: 700; margin-bottom: 40px; letter-spacing: 1px; }
+.menu-btn { 
+    padding: 14px; 
+    border-radius: 12px; 
+    margin-bottom: 15px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: all 0.3s ease; 
+}
+.menu-btn:hover { 
+    background: rgba(255, 255, 255, 0.2); 
+    transform: translateX(5px); 
+}
+.menu-btn.active { 
+    background: rgba(255, 255, 255, 0.15); 
+    font-weight: 600; 
+    border-left: 4px solid #fff; /* Active indicator */
+    border-radius: 0 10px 10px 0; /* Unique shape */
+}
+.logout { margin-top: auto; cursor: pointer; opacity: 0.8; transition: opacity 0.3s; }
+.logout:hover { opacity: 1; }
+
+/* --- MAIN AREA --- */
+.main { flex: 1; padding: 28px 40px; overflow-y: auto; display: flex; flex-direction: column; }
+.top-right { display: flex; justify-content: flex-end; align-items: center; gap: 15px; margin-bottom: 20px; }
+.avatar { 
+    width: 45px; height: 45px; 
+    background-size: cover; border-radius: 50%; 
+    background-position: center; background-color: #d8bbff; 
+    border: 2px solid white; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+}
+h2 { color: #4a148c; font-size: 28px; margin-top: 10px; margin-bottom: 25px; font-weight: 700; }
+
+/* --- GLASSMORPHISM CARDS --- */
+.cards { display: flex; gap: 25px; flex-wrap: wrap; }
+.card { 
+    background: rgba(255, 255, 255, 0.85); /* Semi-transparent */
+    backdrop-filter: blur(12px); /* Glass effect */
+    padding: 25px; 
+    border-radius: 20px; 
+    width: 380px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Soft shadow */
+    border: 1px solid rgba(255, 255, 255, 0.6); /* Subtle border */
+    transition: transform 0.3s ease;
+}
+.card:hover { transform: translateY(-5px); } /* Lift effect */
+.card h3 { color: #6b10c5; margin-bottom: 18px; margin-top: 0; font-size: 1.2em; }
+
+.profile-value { margin: 8px 0; font-size: 0.95em; color: #444; }
+.profile-label { font-weight: 600; width: 110px; display: inline-block; color: #666; }
+
+/* --- MODERN BUTTONS --- */
+.update-btn { 
+    margin-top: 20px; 
+    padding: 12px; 
+    border-radius: 12px; 
+    background: linear-gradient(90deg, #4b0ea5 0%, #7b2cbf 100%); 
+    color: white; 
+    cursor: pointer; 
+    text-align: center; 
+    font-weight: 600; 
+    border: none;
+    box-shadow: 0 4px 15px rgba(75, 14, 165, 0.3);
+    transition: all 0.2s;
+}
+.update-btn:hover { 
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 20px rgba(75, 14, 165, 0.4); 
+}
+
+/* --- PROGRESS BARS --- */
+.progress-bg { background: #e4d2ff; height: 12px; border-radius: 20px; margin-bottom: 18px; overflow: hidden; }
+.progress-fill { 
+    height: 100%; 
+    background: linear-gradient(90deg, #b347ff, #7b2cbf); 
+    border-radius: 20px; 
+    transition: width 1s ease-in-out; 
+}
+.role-header { display: flex; justify-content: space-between; margin-bottom: 6px; font-weight: 600; font-size: 0.9em; color: #333; }
+
+/* --- FEEDBACK MODAL STYLES --- */
+.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); backdrop-filter: blur(5px); }
+.modal-content { 
+    background-color: #fff; 
+    margin: 15% auto; 
+    padding: 30px; 
+    border: none; 
+    width: 380px; 
+    border-radius: 20px; 
+    text-align: center; 
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2); 
+}
+.star-rating { font-size: 35px; color: #e0e0e0; cursor: pointer; transition: color 0.2s; }
+.star-rating.active { color: #ffc107; }
+textarea { 
+    width: 100%; 
+    margin-top: 20px; 
+    padding: 12px; 
+    border-radius: 12px; 
+    border: 2px solid #eee; 
+    resize: none; 
+    font-family: inherit; 
+    transition: border-color 0.3s;
+}
+textarea:focus { border-color: #7b2cbf; outline: none; }
+.modal-btn { 
+    background: linear-gradient(90deg, #4b0ea5 0%, #7b2cbf 100%); 
+    color: white; border: none; padding: 10px 25px; border-radius: 10px; cursor: pointer; margin-top: 20px; font-weight: 600; 
+}
+.close-btn { 
+    background: #f0f0f0; color: #555; border: none; padding: 10px 25px; border-radius: 10px; cursor: pointer; margin-left: 10px; font-weight: 600; 
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h1>Edu2Job</h1>
+    <div class="menu-btn active" onclick="goToDashboard()">Profile Overview</div>
+    <div class="menu-btn" onclick="goToFullProfile()">Profile Details</div>
+    <div class="menu-btn" onclick="goToProfileSetup()">Update Educational Profile</div>
+    <div class="menu-btn" onclick="goToHistoryPage()">Prediction History</div>
+    <div class="menu-btn" onclick="goTovisuals()">Visualization & Insights</div>
+    <div class="logout" onclick="logoutAndRedirect()">Logout</div>
+</div>
+
+<div class="main">
+    <div class="top-right">
+        <div id="topUserName" style="font-weight:600;color:#4a148c;">User</div>
+        <div class="avatar" id="userAvatar"></div>
+    </div>
+    
+    <h2>Profile Overview</h2>
+    
+    <div class="cards">
+        <div class="card">
+            <h3>Profile Details</h3>
+            <div class="profile-value"><span class="profile-label">Name:</span> <span id="pf_name">--</span></div>
+            <div class="profile-value"><span class="profile-label">Degree:</span> <span id="pf_degree">--</span></div>
+            <div class="profile-value"><span class="profile-label">Specialization:</span> <span id="pf_spec">--</span></div>
+            <div class="profile-value"><span class="profile-label">CGPA:</span> <span id="pf_cgpa">--</span></div>
+            <div class="profile-value"><span class="profile-label">Skills:</span> <span id="pf_skills">--</span></div>
+            <div class="update-btn" onclick="goToProfileSetup()">Update Profile</div>
+        </div>
+
+        <div class="card">
+            <h3>Job Role Prediction</h3>
+            <div id="prediction-loading" style="display:none; color:#666; font-size:0.9em; margin-bottom:15px;">🔮 Analyzing your profile...</div>
+            <div id="prediction-content">
+                <div id="row-1"><div class="role-header"><span id="role-1-name">Loading...</span><span id="role-1-score">--%</span></div><div class="progress-bg"><div id="role-1-bar" class="progress-fill" style="width:0%"></div></div></div>
+                <div id="row-2"><div class="role-header"><span id="role-2-name"></span><span id="role-2-score"></span></div><div class="progress-bg"><div id="role-2-bar" class="progress-fill" style="width:0%"></div></div></div>
+                <div id="row-3"><div class="role-header"><span id="role-3-name"></span><span id="role-3-score"></span></div><div class="progress-bg"><div id="role-3-bar" class="progress-fill" style="width:0%"></div></div></div>
+            </div>
+            <div id="prediction-error" style="color:#d9534f; font-size:0.9em; display:none; background:#ffebee; padding:10px; border-radius:8px; margin-bottom:10px;"></div>
+            <div style="margin-top:20px; font-size:0.9em; color:#666; text-align:center;">
+                <span onclick="goToHistoryPage()" style="cursor:pointer; color:#4b0ea5; font-weight:600;">View Full History & Top 5 Details &rarr;</span>
+            </div>
+            <button onclick="clearPredictionCache()" style="margin-top:10px; width:100%; font-size:0.85em; background:none; border:none; color:#888; cursor:pointer; text-decoration:underline;">Refresh Prediction</button>
+        </div>
+    </div>
+</div>
+
+<div id="feedbackModal" class="modal">
+    <div class="modal-content">
+        <h3 style="color:#4b0ea5; margin-top:0; font-size:1.5em;">Rate Prediction</h3>
+        <p style="color:#666; font-size:0.95em; margin-bottom:20px;">Was this result helpful?</p>
+        
+        <div id="stars">
+            <span class="star-rating" onclick="setRating(1)">★</span>
+            <span class="star-rating" onclick="setRating(2)">★</span>
+            <span class="star-rating" onclick="setRating(3)">★</span>
+            <span class="star-rating" onclick="setRating(4)">★</span>
+            <span class="star-rating" onclick="setRating(5)">★</span>
+        </div>
+        <input type="hidden" id="selectedRating" value="0">
+        
+        <textarea id="feedbackText" rows="3" placeholder="Any comments? (Optional)"></textarea>
+        
+        <button class="modal-btn" onclick="submitFeedback()">Submit</button>
+        <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+if (window.__DASHBOARD_LOADED__) {
+    console.log("⚠️ Dashboard script already loaded.");
+} else {
+    window.__DASHBOARD_LOADED__ = true;
+    let currentHistoryId = null; // Store ID for feedback
+
+    /* NAVIGATION */
+    window.goToDashboard = function(){ window.location.href = "dashboard.html"; }
+    window.goToFullProfile = function(){ window.location.href = "profile_details.html"; }
+    window.goToProfileSetup = function(){ window.location.href = "profile_setup.html"; }
+    window.goToHistoryPage = function(){ window.location.href = "history.html"; }
+    window.goTovisuals = function(){ window.location.href = "visuals.html"; }
+    window.logoutAndRedirect = function() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('access_token');
+        window.location.href = 'login.html';
+    }
+
+    /* CLEAR CACHE HELPER */
+    window.clearPredictionCache = function() {
+        sessionStorage.removeItem("prediction_done");
+        sessionStorage.removeItem("cached_recommendations");
+        sessionStorage.removeItem("last_history_id"); // Clear ID too
+        window.location.reload();
+    }
+
+    async function loadDashboard(){
+        try {
+            console.log("🚀 Initializing Dashboard...");
+            // Assuming fetchProfile is in script.js
+            const userData = await fetchProfile();
+
+            // Fill Profile
+            document.getElementById("pf_name").textContent = userData.username || "--";
+            document.getElementById("pf_degree").textContent = userData.degree || "--";
+            document.getElementById("pf_spec").textContent = userData.specialization || "--";
+            document.getElementById("pf_cgpa").textContent = userData.cgpa || "--";
+            document.getElementById("pf_skills").textContent = userData.skills || "--";
+            document.getElementById("topUserName").textContent = userData.username || "User";
+            let img = localStorage.getItem("google_picture");
+            if (!img) img = "https://cdn-icons-png.flaticon.com/512/149/149071.png"; 
+            document.getElementById("userAvatar").style.backgroundImage = `url('${img}')`;
+
+            // 1. CHECK FOR SAVED RESULT FIRST
+            const savedRecs = sessionStorage.getItem("cached_recommendations");
+
+            if (savedRecs) {
+                console.log("✅ Using cached prediction");
+                updatePredictionUI(JSON.parse(savedRecs));
+            } 
+            // 2. IF NO SAVED RESULT, CALL API
+            else if (!sessionStorage.getItem("prediction_done")) {
+                // Only call prediction if we have at least a degree to work with
+                if (userData.degree) {
+                    sessionStorage.setItem("prediction_done", "true");
+                    await loadPredictions(userData);
+                } else {
+                    showPredictionError("Please update your profile to see predictions.");
+                }
+            } else {
+                showPredictionError("Prediction cached. Click 'Refresh Prediction' below.");
+            }
+
+        } catch (err) {
+            console.error("Dashboard Load Error:", err);
+            if (err.message && err.message.includes("401")) window.location.href = "login.html";
+        }
+    }
+
+    async function loadPredictions(profile) {
+        const loadingDiv = document.getElementById("prediction-loading");
+        const contentDiv = document.getElementById("prediction-content");
+        const errorDiv = document.getElementById("prediction-error");
+        
+        loadingDiv.style.display = "block";
+        contentDiv.style.opacity = "0.5";
+        errorDiv.style.display = "none";
+
+        try {
+            const token = localStorage.getItem('access_token');
+            const payload = {
+                "Field_of_Study": profile.specialization || "", 
+                "Degree": profile.degree || "", 
+                "University_GPA": parseFloat(profile.cgpa || 0),
+                "Certifications": profile.certifications || "",
+                "Internships_Completed": (profile.internship === "Yes" || profile.internship === "1") ? 1 : 0
+            };
+
+            const res = await fetch("http://127.0.0.1:5000/predict", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
+                body: JSON.stringify(payload)
+            });
+
+            if (res.status === 401) {
+                window.location.href = "login.html";
+                return;
+            }
+
+            const data = await res.json();
+
+            if (data.status === "success" && data.recommendations) {
+                // Save Data
+                sessionStorage.setItem("cached_recommendations", JSON.stringify(data.recommendations));
+                if(data.history_id) sessionStorage.setItem("last_history_id", data.history_id);
+                currentHistoryId = data.history_id;
+
+                updatePredictionUI(data.recommendations);
+
+                // Show Feedback Modal after 2 seconds
+                setTimeout(() => {
+                    document.getElementById("feedbackModal").style.display = "block";
+                }, 2000);
+
+            } else {
+                showPredictionError("AI could not generate a prediction.");
+            }
+
+        } catch (error) {
+            console.error("Prediction Error:", error);
+            showPredictionError("Server offline.");
+            sessionStorage.removeItem("prediction_done");
+        } finally {
+            loadingDiv.style.display = "none";
+            contentDiv.style.opacity = "1";
+        }
+    }
+
+    function updatePredictionUI(recs) {
+        const setRow = (num, item) => {
+            const row = document.getElementById(`row-${num}`);
+            if(item) {
+                row.style.display = "block";
+                document.getElementById(`role-${num}-name`).innerText = item.role;
+                document.getElementById(`role-${num}-score`).innerText = item.confidence;
+                document.getElementById(`role-${num}-bar`).style.width = item.confidence;
+            } else {
+                row.style.display = "none";
+            }
+        };
+        if (recs && recs.length > 0) setRow(1, recs[0]);
+        if (recs && recs.length > 1) setRow(2, recs[1]);
+        if (recs && recs.length > 2) setRow(3, recs[2]);
+    }
+
+    function showPredictionError(msg) {
+        document.getElementById("prediction-content").style.display = "none";
+        const errDiv = document.getElementById("prediction-error");
+        errDiv.style.display = "block";
+        errDiv.innerText = msg;
+    }
+    
+
+    /* FEEDBACK FUNCTIONS */
+    window.setRating = function(n) {
+        document.getElementById("selectedRating").value = n;
+        const stars = document.querySelectorAll(".star-rating");
+        stars.forEach((s, index) => {
+            if(index < n) s.classList.add("active");
+            else s.classList.remove("active");
+        });
+    }
+
+    window.closeModal = function() {
+        document.getElementById("feedbackModal").style.display = "none";
+    }
+
+    window.submitFeedback = async function() {
+        const rating = document.getElementById("selectedRating").value;
+        const comments = document.getElementById("feedbackText").value;
+        // Get ID from variable or storage if cached
+        const histId = currentHistoryId || sessionStorage.getItem("last_history_id");
+
+        if(!histId) { alert("Error: No prediction ID found."); return; }
+        if(rating == "0") { alert("Please select a star rating."); return; }
+
+        try {
+            const token = localStorage.getItem('access_token');
+            const res = await fetch("http://127.0.0.1:5000/submit-feedback", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
+                body: JSON.stringify({ history_id: histId, rating: rating, comments: comments })
+            });
+
+            if(res.ok) {
+                alert("Thank you for your feedback!");
+                closeModal();
+            } else {
+                alert("Failed to submit feedback.");
+            }
+        } catch(e) {
+            console.error(e);
+            alert("Network error.");
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", loadDashboard);
+}
+</script>
+</body>
+</html>
